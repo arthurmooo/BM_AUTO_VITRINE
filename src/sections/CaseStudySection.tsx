@@ -20,8 +20,6 @@ const missions = [
   { name: 'Mission Gamma', progress: 85, tone: 'gold' },
 ];
 
-const proofChips = ['15 workflows MVP', 'Portail client', 'Sync CRM', 'Historique complet'];
-
 const trustChips = ['Données isolées par client', 'Accès par rôle', 'Traçabilité', 'Hébergement EU'];
 
 export default function CaseStudySection() {
@@ -46,17 +44,6 @@ export default function CaseStudySection() {
           <p className="mx-auto mt-5 max-w-[760px] text-[15px] leading-7 text-ivory/[0.58] sm:text-base">
             Pour un cabinet M&amp;A international, nous avons conçu une webapp interne + client pour centraliser les missions, les cibles, les relances, les documents et le reporting.
           </p>
-
-          <div className="mx-auto mt-7 flex max-w-[760px] flex-wrap items-center justify-center gap-2.5">
-            {proofChips.map((chip) => (
-              <span
-                key={chip}
-                className="rounded-full border border-gold/30 bg-white/[0.065] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-ivory/78 shadow-[0_10px_30px_rgba(10,5,18,0.12)]"
-              >
-                {chip}
-              </span>
-            ))}
-          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
@@ -298,23 +285,15 @@ export default function CaseStudySection() {
           </article>
         </div>
 
-        <div className="mx-auto mt-8 grid w-full max-w-[1120px] grid-cols-2 gap-3 rounded-[18px] border border-gold/16 bg-white/[0.025] p-3 sm:grid-cols-4">
+        <div className="mx-auto mt-8 grid w-full max-w-[1120px] grid-cols-2 gap-3 rounded-[18px] border border-gold/45 bg-gold/[0.08] p-3 shadow-[0_18px_48px_rgba(10,5,18,0.16)] sm:grid-cols-4">
           {trustChips.map((chip) => (
             <div
               key={chip}
-              className="rounded-[12px] border border-gold/[0.12] bg-[#20142f]/78 px-3 py-3 text-center text-[11px] font-medium uppercase tracking-[0.1em] text-ivory/72"
+              className="rounded-[12px] border border-gold/35 bg-[#3a294d] px-3 py-3 text-center text-[11px] font-semibold uppercase tracking-[0.1em] text-ivory shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
             >
               {chip}
             </div>
           ))}
-        </div>
-
-        <div className="mt-10 flex items-center justify-center gap-3">
-          <div className="h-px w-8 bg-gold/35" />
-          <span className="micro-label text-center text-[10px] text-ivory/[0.42]">
-            CONFIDENTIEL — SUR-MESURE — PRODUCTION-READY
-          </span>
-          <div className="h-px w-8 bg-gold/35" />
         </div>
       </div>
     </section>

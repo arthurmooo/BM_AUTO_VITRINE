@@ -85,9 +85,6 @@ export default function FooterSection() {
               ))}
             </div>
 
-            <span className="text-[9px] text-gold tracking-wider uppercase">
-              Paris — Confidentiel — Sur-mesure
-            </span>
           </div>
         </div>
       </div>

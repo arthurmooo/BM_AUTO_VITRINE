@@ -41,7 +41,7 @@ export default function UseCasesSection() {
             <img
               src="/assets/bento/relances-pieces.png"
               alt="Cartes de relance programmée et pièces attendues"
-              className="absolute top-[11%] right-[-4%] z-10 w-[76%] max-w-[700px] drop-shadow-[0_24px_55px_rgba(0,0,0,0.24)] max-lg:right-[-4%] max-lg:w-[80%]"
+              className="bento-image bento-image-relances absolute z-10 drop-shadow-[0_24px_55px_rgba(0,0,0,0.24)]"
               loading="eager"
             />
             <div className="absolute inset-0 opacity-[0.16]" style={{
@@ -60,12 +60,12 @@ export default function UseCasesSection() {
             <img
               src="/assets/bento/reporting-client.png"
               alt="Rapport mensuel généré automatiquement"
-              className="absolute top-[16%] right-[-9%] z-10 w-[82%] max-w-[720px] drop-shadow-[0_26px_48px_rgba(43,30,61,0.14)] 2xl:top-[16%] 2xl:right-[-9%] 2xl:w-[82%] max-lg:right-[-17%] max-lg:w-[94%]"
+              className="bento-image bento-image-reporting absolute z-10 drop-shadow-[0_26px_48px_rgba(43,30,61,0.14)]"
               loading="eager"
             />
           </article>
 
-          <article className="bento-card relative col-span-12 min-h-[360px] max-lg:min-h-[390px] overflow-hidden rounded-[18px] border border-gold/14 bg-cream/55 p-8 lg:col-span-5">
+          <article className="bento-card relative col-span-12 min-h-[360px] max-lg:min-h-[390px] overflow-hidden rounded-[18px] border border-gold/14 bg-cream/55 p-8 lg:col-span-5 xl:min-h-[480px]">
             <div className="relative z-20 max-w-[360px]">
               <h3 className="font-serif text-[clamp(27px,2.15vw,36px)] leading-tight text-ink">Suivi de dossiers</h3>
               <p className="mt-3 max-w-[270px] text-[clamp(13px,0.95vw,16px)] leading-relaxed text-muted-gray">
@@ -75,12 +75,12 @@ export default function UseCasesSection() {
             <img
               src="/assets/bento/suivi-dossiers.png"
               alt="Liste de missions et statuts de dossiers"
-              className="absolute bottom-[-10%] left-[-1%] z-10 w-[102%] max-w-[710px] drop-shadow-[0_18px_38px_rgba(43,30,61,0.11)] 2xl:bottom-[-38%] 2xl:left-[3%] 2xl:w-[94%] 2xl:max-w-[620px]"
+              className="bento-image bento-image-suivi absolute z-10 drop-shadow-[0_18px_38px_rgba(43,30,61,0.11)]"
               loading="eager"
             />
           </article>
 
-          <article className="bento-card relative col-span-12 min-h-[340px] max-lg:min-h-[360px] overflow-hidden rounded-[18px] bg-violet p-8 lg:col-span-3">
+          <article className="bento-card relative col-span-12 min-h-[340px] max-lg:min-h-[360px] overflow-hidden rounded-[18px] bg-violet p-8 lg:col-span-3 xl:min-h-[480px]">
             <div className="relative z-20 max-w-[185px]">
               <h3 className="font-serif text-[clamp(27px,2.05vw,35px)] leading-tight text-ivory">Synchronisation</h3>
               <p
@@ -90,7 +90,7 @@ export default function UseCasesSection() {
                 Vos outils parlent entre eux : plus de double saisie, plus de données désynchronisées.
               </p>
             </div>
-            <div className="bento-visual absolute bottom-[-11%] left-1/2 z-10 w-[100%] max-w-[365px] -translate-x-1/2 2xl:bottom-[-18%] 2xl:w-[98%]">
+            <div className="bento-visual bento-visual-sync absolute left-1/2 z-10 -translate-x-1/2">
               <img
                 src="/assets/bento/synchronisation.png"
                 alt="Synchronisation entre CRM, fichiers et email"
@@ -100,7 +100,7 @@ export default function UseCasesSection() {
             </div>
           </article>
 
-          <article className="bento-card relative col-span-12 min-h-[340px] overflow-hidden rounded-[18px] border border-gold/14 bg-cream/55 p-8 lg:col-span-4">
+          <article className="bento-card relative col-span-12 min-h-[340px] overflow-hidden rounded-[18px] border border-gold/14 bg-cream/55 p-8 lg:col-span-4 xl:min-h-[480px]">
             <div className="relative z-20 max-w-[245px]">
               <h3 className="font-serif text-[clamp(27px,2.05vw,35px)] leading-[1.05] text-ink">
                 RDV &<br />comptes-rendus
@@ -109,7 +109,7 @@ export default function UseCasesSection() {
                 Documents préparés, compte-rendus structurés, actions créées automatiquement.
               </p>
             </div>
-            <div className="bento-visual absolute bottom-[-8%] left-1/2 z-10 w-[104%] max-w-[640px] -translate-x-1/2 2xl:bottom-[-14%] 2xl:w-[102%]">
+            <div className="bento-visual bento-visual-rdv absolute left-1/2 z-10 -translate-x-1/2">
               <img
                 src="/assets/bento/rdv-comptes-rendus.png"
                 alt="Rendez-vous, compte-rendu généré et actions créées"
@@ -119,7 +119,7 @@ export default function UseCasesSection() {
             </div>
           </article>
 
-          <article className="bento-card relative col-span-12 min-h-[300px] max-lg:min-h-[430px] overflow-hidden rounded-[18px] border border-gold/14 bg-cream/55 p-8 2xl:p-10">
+          <article className="bento-card relative col-span-12 min-h-[340px] max-lg:min-h-[400px] overflow-hidden rounded-[18px] border border-gold/14 bg-cream/55 p-8 2xl:p-10">
             <div className="relative z-20 max-w-[285px] 2xl:max-w-[320px]">
               <h3 className="font-serif text-[clamp(30px,2.45vw,40px)] leading-tight text-ink">
                 Visibilité client & partage
@@ -131,7 +131,7 @@ export default function UseCasesSection() {
             <img
               src="/assets/bento/visibilite-client.png"
               alt="Mission Alpha avec prochaine échéance et activité récente"
-              className="absolute bottom-[-24%] right-[1%] z-10 w-[70%] max-w-[1080px] max-lg:bottom-[4%] max-lg:right-[2%] max-lg:w-[92%]"
+              className="bento-image bento-image-visibilite absolute z-10"
               loading="eager"
             />
           </article>

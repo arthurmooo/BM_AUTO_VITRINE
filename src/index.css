@@ -333,6 +333,126 @@
   transform: translate3d(0, -3px, 0) scale(1.025);
 }
 
+/* Use case bento framing */
+.bento-image {
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.bento-image-relances {
+  top: 10%;
+  right: -1%;
+  width: min(76%, 680px);
+}
+
+.bento-image-reporting {
+  top: 15%;
+  right: -6%;
+  width: min(76%, 690px);
+}
+
+.bento-image-suivi {
+  bottom: 12px;
+  left: 50%;
+  width: min(96%, 700px);
+  max-width: 700px;
+  transform: translateX(-50%);
+}
+
+.bento-card:hover > .bento-image-suivi,
+.bento-card.is-hover-preview > .bento-image-suivi {
+  transform: translateX(-50%) translate3d(0, -3px, 0) scale(1.025);
+}
+
+.bento-visual-sync {
+  bottom: 12px;
+  width: min(92%, 350px);
+}
+
+.bento-visual-rdv {
+  bottom: 22px;
+  width: min(92%, 540px);
+}
+
+.bento-image-visibilite {
+  right: 2.5%;
+  bottom: -10px;
+  width: min(72%, 1080px);
+}
+
+@media (min-width: 1536px) {
+  .bento-image-relances {
+    top: 10%;
+    right: -1%;
+    width: min(76%, 720px);
+  }
+
+  .bento-image-reporting {
+    top: 15%;
+    right: -5%;
+    width: min(76%, 730px);
+  }
+
+  .bento-image-suivi {
+    bottom: 14px;
+    width: min(92%, 680px);
+    max-width: 680px;
+  }
+
+  .bento-visual-sync {
+    bottom: 16px;
+    width: min(82%, 320px);
+  }
+
+  .bento-visual-rdv {
+    bottom: 28px;
+    width: min(88%, 520px);
+  }
+
+  .bento-image-visibilite {
+    right: 3%;
+    bottom: -18px;
+    width: min(58%, 900px);
+  }
+}
+
+@media (max-width: 1279px) {
+  .bento-image-relances {
+    top: 11%;
+    right: -2%;
+    width: min(76%, 650px);
+  }
+
+  .bento-image-reporting {
+    top: 16%;
+    right: -8%;
+    width: min(78%, 660px);
+  }
+
+  .bento-image-suivi {
+    bottom: 12px;
+    left: 50%;
+    width: min(94%, 650px);
+  }
+
+  .bento-visual-sync {
+    bottom: 14px;
+    width: min(88%, 330px);
+  }
+
+  .bento-visual-rdv {
+    bottom: 22px;
+    width: min(88%, 500px);
+  }
+
+  .bento-image-visibilite {
+    right: 2.5%;
+    bottom: -10px;
+    width: min(76%, 980px);
+  }
+}
+
 /* Button hover — lift + shadow */
 .btn-premium {
   position: relative;
@@ -433,5 +553,10 @@
   .img-premium:hover {
     transform: none;
     scale: 1;
+  }
+
+  .bento-card:hover > .bento-image-suivi,
+  .bento-card.is-hover-preview > .bento-image-suivi {
+    transform: translateX(-50%);
   }
 }
