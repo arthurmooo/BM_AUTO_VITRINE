@@ -11,7 +11,7 @@ export default function MethodSection() {
       subtitle: 'LE PROCESS RÉEL',
       description:
         "Nous analysons vos flux : fichiers,\nemails, CRM, validations, exceptions\net points de décision.",
-      image: '/assets/methode-cartographie-normalized.png',
+      image: '/assets/methode-cartographie-normalized.webp',
       alt: 'Cartographie des outils et process',
     },
     {
@@ -20,7 +20,7 @@ export default function MethodSection() {
       subtitle: 'LES FRICTIONS MANUELLES',
       description:
         "Nous isolons les relances, doubles saisies,\nrecherches et reconstructions qui\nconsomment du temps qualifié.",
-      image: '/assets/methode-frictions-normalized.png',
+      image: '/assets/methode-frictions-normalized.webp',
       alt: 'Frictions manuelles identifiées',
     },
     {
@@ -29,7 +29,7 @@ export default function MethodSection() {
       subtitle: 'LE SYSTÈME UTILE',
       description:
         "Chaque automatisation répond à un besoin précis, relié à vos outils.",
-      image: '/assets/methode-systeme-normalized.png',
+      image: '/assets/methode-systeme-normalized.webp',
       alt: 'Construction du système automatisé',
     },
     {
@@ -38,7 +38,7 @@ export default function MethodSection() {
       subtitle: 'MESURER, AJUSTER',
       description:
         "Nous mettons en production,\nmesurons le gain, puis ajustons\nsur vos usages réels.",
-      image: '/assets/methode-deploiement-normalized.png',
+      image: '/assets/methode-deploiement-normalized.webp',
       alt: 'Déploiement et mesure des résultats',
     },
   ];

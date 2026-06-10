@@ -52,28 +52,28 @@ const mobileSlides: MobileSlide[] = [
   {
     title: 'Fiche cible structurée',
     description: 'Données cibles alignées avec le CRM, sans double saisie inutile.',
-    image: '/assets/case-study/fiche-cible-crop.png',
+    image: '/assets/case-study/fiche-cible-crop.webp',
     alt: 'Fiche cible Alpha Partners avec secteur, chiffre\u2019affaires et statut',
     icon: ClipboardList,
   },
   {
     title: 'Reporting \u0026 CRM',
     description: 'Statuts, interactions et documents restent cohérents entre les outils.',
-    image: '/assets/case-study/reporting-crm-crop.png',
+    image: '/assets/case-study/reporting-crm-crop.webp',
     alt: 'Synchronisation entre reporting et CRM existant',
     icon: RefreshCw,
   },
   {
     title: 'Portail client dédié',
     description: 'Le client suit l’avancement, consulte les cibles et donne son feedback.',
-    image: '/assets/case-study/portail-client-crop.png',
+    image: '/assets/case-study/portail-client-crop.webp',
     alt: 'Portail client avec progression de la Mission Alpha',
     icon: Users,
   },
   {
     title: 'Feedback client',
     description: 'Retours clients structurés, rattachés automatiquement au bon dossier.',
-    image: '/assets/case-study/feedback-client-crop.png',
+    image: '/assets/case-study/feedback-client-crop.webp',
     alt: 'Feedback client intégré au dossier',
     icon: MessageSquare,
   },
@@ -81,7 +81,7 @@ const mobileSlides: MobileSlide[] = [
   {
     title: 'Sécurité \u0026 conformité',
     description: 'Accès par rôles, données isolées par client, traçabilité et hébergement UE.',
-    image: '/assets/case-study/security-shield-crop.png',
+    image: '/assets/case-study/security-shield-crop.webp',
     alt: 'Bouclier de sécurité et conformité',
     icon: ShieldCheck,
   },
@@ -242,7 +242,7 @@ export default function CaseStudySection() {
                 </p>
               </div>
               <img
-                src="/assets/case-study/fiche-cible-crop.png"
+                src="/assets/case-study/fiche-cible-crop.webp"
                 alt="Fiche cible Alpha Partners avec secteur, chiffre d'affaires, pays et statut."
                 className={`${assetClass} mx-auto max-h-[245px] w-full max-w-[315px]`}
                 loading="lazy"
@@ -264,7 +264,7 @@ export default function CaseStudySection() {
                 </p>
               </div>
               <img
-                src="/assets/case-study/reporting-crm-crop.png"
+                src="/assets/case-study/reporting-crm-crop.webp"
                 alt="Synchronisation entre reporting prêt et CRM existant."
                 className={`${assetClass} mx-auto max-h-[250px] w-full max-w-[235px]`}
                 loading="lazy"
@@ -287,7 +287,7 @@ export default function CaseStudySection() {
                 </p>
               </div>
               <img
-                src="/assets/case-study/portail-client-crop.png"
+                src="/assets/case-study/portail-client-crop.webp"
                 alt="Portail client Acme Corp avec progression de la Mission Alpha."
                 className={`${assetClass} mx-auto max-h-[245px] w-full max-w-[335px]`}
                 loading="lazy"
@@ -309,7 +309,7 @@ export default function CaseStudySection() {
                 </p>
               </div>
               <img
-                src="/assets/case-study/feedback-client-crop.png"
+                src="/assets/case-study/feedback-client-crop.webp"
                 alt="Bulle de feedback indiquant retour reçu et intégré au dossier."
                 className={`${assetClass} mx-auto max-h-[180px] w-full max-w-[310px]`}
                 loading="lazy"
@@ -362,7 +362,7 @@ export default function CaseStudySection() {
                 </p>
               </div>
               <img
-                src="/assets/case-study/security-shield-crop.png"
+                src="/assets/case-study/security-shield-crop.webp"
                 alt="Bouclier doré représentant la sécurité et la conformité."
                 className={`${assetClass} mx-auto max-h-[178px] w-full max-w-[210px]`}
                 loading="lazy"
@@ -425,7 +425,7 @@ export default function CaseStudySection() {
                           src={slide.image}
                           alt={slide.alt}
                           className="max-h-[150px] w-auto object-contain drop-shadow-[0_16px_36px_rgba(0,0,0,0.3)]"
-                          loading="eager"
+                          loading="lazy"
                         />
                       ) : (
                         <div className="w-full rounded-[18px] border border-white/[0.07] bg-[#171128]/74 px-4 py-4 shadow-[0_16px_36px_rgba(0,0,0,0.24)]">

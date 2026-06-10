@@ -56,7 +56,7 @@ export default function BeforeAfterSection() {
             className="transformation-panel relative flex min-h-[180px] items-center justify-center overflow-visible sm:min-h-[270px] lg:min-h-[430px]"
           >
             <img
-              src="/assets/chaos-avant.png"
+              src="/assets/chaos-avant.webp"
               alt="Avant : chaos opérationnel"
               className="h-auto w-[min(820px,96vw)] object-contain lg:w-[142%]"
               loading="lazy"
@@ -91,7 +91,7 @@ export default function BeforeAfterSection() {
             className="transformation-panel relative flex min-h-[180px] items-center justify-center overflow-visible sm:min-h-[270px] lg:min-h-[410px]"
           >
             <img
-              src="/assets/chaos-apres.png"
+              src="/assets/chaos-apres.webp"
               alt="Après : pilotage opérationnel consolidé"
               className="h-auto w-[min(860px,96vw)] object-contain lg:w-[112%]"
               loading="lazy"

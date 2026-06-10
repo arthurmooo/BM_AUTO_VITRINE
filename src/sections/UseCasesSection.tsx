@@ -10,7 +10,7 @@ const useCases = [
     title: 'Relances & suivi de pièces',
     description:
       'Relances planifiées, pièces suivies, dossiers visibles. Moins d’oublis dans les boîtes mail.',
-    image: '/assets/bento/relances-pieces.png',
+    image: '/assets/bento/relances-pieces.webp',
     alt: 'Cartes de relance programmée et pièces attendues',
     bgViolet: true,
     icon: Mail,
@@ -19,7 +19,7 @@ const useCases = [
     title: 'Reporting client',
     description:
       'Un reporting fiable, généré à partir des données à jour. Sans reconstruction manuelle.',
-    image: '/assets/bento/reporting-client.png',
+    image: '/assets/bento/reporting-client.webp',
     alt: 'Rapport mensuel généré automatiquement',
     bgViolet: false,
     icon: BarChart3,
@@ -28,7 +28,7 @@ const useCases = [
     title: 'Suivi de dossiers',
     description:
       'Une vue claire des étapes, responsables, échéances et points de blocage.',
-    image: '/assets/bento/suivi-dossiers.png',
+    image: '/assets/bento/suivi-dossiers.webp',
     alt: 'Liste de missions et statuts de dossiers',
     bgViolet: false,
     icon: FolderOpen,
@@ -37,7 +37,7 @@ const useCases = [
     title: 'Synchronisation',
     description:
       'Vos outils parlent mieux entre eux. Moins de double saisie, moins de données décalées.',
-    image: '/assets/bento/synchronisation.png',
+    image: '/assets/bento/synchronisation.webp',
     alt: 'Synchronisation entre CRM, fichiers et email',
     bgViolet: true,
     icon: RefreshCw,
@@ -46,7 +46,7 @@ const useCases = [
     title: 'RDV & comptes-rendus',
     description:
       'Comptes-rendus structurés, actions créées, informations rattachées au bon dossier.',
-    image: '/assets/bento/rdv-comptes-rendus.png',
+    image: '/assets/bento/rdv-comptes-rendus.webp',
     alt: 'Rendez-vous, compte-rendu généré et actions créées',
     bgViolet: false,
     icon: Calendar,
@@ -55,7 +55,7 @@ const useCases = [
     title: 'Visibilité client & partage',
     description:
       'Un espace dédié pour suivre l’avancement, consulter les éléments partagés et donner un retour.',
-    image: '/assets/bento/visibilite-client.png',
+    image: '/assets/bento/visibilite-client.webp',
     alt: 'Mission Alpha avec prochaine échéance et activité récente',
     bgViolet: false,
     icon: Eye,
@@ -122,10 +122,10 @@ export default function UseCasesSection() {
               </p>
             </div>
             <img
-              src="/assets/bento/relances-pieces.png"
+              src="/assets/bento/relances-pieces.webp"
               alt="Cartes de relance programmée et pièces attendues"
               className="bento-image bento-image-relances absolute z-10 drop-shadow-[0_24px_55px_rgba(0,0,0,0.24)]"
-              loading="eager"
+              loading="lazy"
             />
             <div className="absolute inset-0 opacity-[0.16]" style={{
               backgroundImage: 'radial-gradient(circle at 30% 70%, rgba(184,155,94,0.7) 0 1px, transparent 2px)',
@@ -141,10 +141,10 @@ export default function UseCasesSection() {
               </p>
             </div>
             <img
-              src="/assets/bento/reporting-client.png"
+              src="/assets/bento/reporting-client.webp"
               alt="Rapport mensuel généré automatiquement"
               className="bento-image bento-image-reporting absolute z-10 drop-shadow-[0_26px_48px_rgba(43,30,61,0.14)]"
-              loading="eager"
+              loading="lazy"
             />
           </article>
 
@@ -156,10 +156,10 @@ export default function UseCasesSection() {
               </p>
             </div>
             <img
-              src="/assets/bento/suivi-dossiers.png"
+              src="/assets/bento/suivi-dossiers.webp"
               alt="Liste de missions et statuts de dossiers"
               className="bento-image bento-image-suivi absolute z-10 drop-shadow-[0_18px_38px_rgba(43,30,61,0.11)]"
-              loading="eager"
+              loading="lazy"
             />
           </article>
 
@@ -175,10 +175,10 @@ export default function UseCasesSection() {
             </div>
             <div className="bento-visual bento-visual-sync absolute left-1/2 z-10 -translate-x-1/2">
               <img
-                src="/assets/bento/synchronisation.png"
+                src="/assets/bento/synchronisation.webp"
                 alt="Synchronisation entre CRM, fichiers et email"
                 className="w-full drop-shadow-[0_24px_42px_rgba(0,0,0,0.22)]"
-                loading="eager"
+                loading="lazy"
               />
             </div>
           </article>
@@ -194,10 +194,10 @@ export default function UseCasesSection() {
             </div>
             <div className="bento-visual bento-visual-rdv absolute left-1/2 z-10 -translate-x-1/2">
               <img
-                src="/assets/bento/rdv-comptes-rendus.png"
+                src="/assets/bento/rdv-comptes-rendus.webp"
                 alt="Rendez-vous, compte-rendu généré et actions créées"
                 className="w-full drop-shadow-[0_20px_40px_rgba(43,30,61,0.1)]"
-                loading="eager"
+                loading="lazy"
               />
             </div>
           </article>
@@ -212,10 +212,10 @@ export default function UseCasesSection() {
               </p>
             </div>
             <img
-              src="/assets/bento/visibilite-client.png"
+              src="/assets/bento/visibilite-client.webp"
               alt="Mission Alpha avec prochaine échéance et activité récente"
               className="bento-image bento-image-visibilite absolute z-10"
-              loading="eager"
+              loading="lazy"
             />
           </article>
         </div>
@@ -284,7 +284,7 @@ export default function UseCasesSection() {
                         src={item.image}
                         alt={item.alt}
                         className="max-h-[140px] w-auto object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.18)]"
-                        loading="eager"
+                          loading="lazy"
                       />
                     </div>
                   </div>

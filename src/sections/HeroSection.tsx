@@ -174,10 +174,11 @@ export default function HeroSection() {
           style={{ opacity: 0, marginBottom: 'calc(4vh - 20px)' }}
         >
           <img
-            src="/assets/hero-mission-alpha-industries.png"
+            src="/assets/hero-mission-alpha-industries.webp"
             alt="Interface BM Automation montrant une mission client avec collecte, traitement, pilotage et transmission."
             className="mx-auto block w-full h-auto max-h-[70vh] sm:max-h-[109vh] object-contain"
             loading="eager"
+            fetchPriority="high"
             decoding="async"
           />
         </div>
