@@ -98,7 +98,7 @@ export default function HeroSection() {
       className="relative w-full min-h-[100dvh] overflow-hidden bg-ivory z-10 flex flex-col items-center"
     >
       {/* Content container */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-[12vh] pb-[5vh] px-[6vw]">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-[10vh] sm:pt-[12vh] pb-[5vh] px-[6vw]">
         {/* Micro label — gold */}
         <div ref={labelRef} className="mt-0" style={{ opacity: 0 }}>
           <span className="micro-label text-gold tracking-[0.18em]">
@@ -120,7 +120,7 @@ export default function HeroSection() {
         <h1
           ref={headlineRef}
           aria-label="Vos équipes sont payées pour décider. Pas pour recopier."
-          className="font-serif text-display text-violet text-center mt-[5vh] px-[8vw] max-w-[90vw]"
+          className="font-serif text-display text-violet text-center mt-[5vh] px-4 sm:px-[8vw] max-w-[95vw] sm:max-w-[90vw]"
           style={{ fontWeight: 400 }}
         >
           {headlineWords.map((word, i) => (
@@ -137,7 +137,7 @@ export default function HeroSection() {
         {/* Subheadline */}
         <p
           ref={subheadRef}
-          className="text-center text-muted-gray text-[clamp(14px,1.15vw,17px)] leading-relaxed mt-5 max-w-[56vw] px-6"
+          className="text-center text-muted-gray text-[clamp(14px,1.15vw,17px)] leading-relaxed mt-5 max-w-[90vw] sm:max-w-[56vw] px-4 sm:px-6"
           style={{ opacity: 0 }}
         >
           BM Automation transforme vos fichiers, emails, CRM et reportings dispersés en systèmes clairs, fiables et actionnables.
@@ -170,13 +170,13 @@ export default function HeroSection() {
         {/* Central product illustration */}
         <div
           ref={cardRef}
-          className="w-[min(2772px,121vw)]"
+          className="w-full sm:w-[min(2772px,121vw)] px-2 sm:px-0 pb-6 sm:pb-0"
           style={{ opacity: 0, marginBottom: 'calc(4vh - 20px)' }}
         >
           <img
             src="/assets/hero-mission-alpha-industries.png"
             alt="Interface BM Automation montrant une mission client avec collecte, traitement, pilotage et transmission."
-            className="mx-auto block w-full h-auto max-h-[109vh] object-contain"
+            className="mx-auto block w-full h-auto max-h-[70vh] sm:max-h-[109vh] object-contain"
             loading="eager"
             decoding="async"
           />

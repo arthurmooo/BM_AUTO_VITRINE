@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 
-const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet328/prise-de-contact?month=2026-05';
+const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet328/prise-de-contact';
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,7 +31,7 @@ export default function Navigation() {
             : 'bg-transparent'
         }`}
       >
-        <div className="flex items-center justify-between px-[6vw] py-4">
+        <div className="flex items-center justify-between px-[5vw] sm:px-[6vw] py-3 sm:py-4">
           {/* Wordmark */}
           <a href="/#hero" className="flex items-baseline gap-2 group">
             <span className="font-serif text-2xl text-violet font-medium tracking-tight">
@@ -62,19 +62,20 @@ export default function Navigation() {
               href={DIAGNOSTIC_URL}
               target="_blank"
               rel="noreferrer"
-              className="btn-premium hidden sm:flex items-center gap-2 bg-violet text-ivory px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-violet/90"
+              className="btn-premium hidden md:flex items-center gap-2 bg-violet text-ivory px-3 sm:px-4 py-2.5 rounded-lg text-xs sm:text-sm font-medium hover:bg-violet/90 whitespace-nowrap"
             >
-              Planifier un diagnostic
+              <span className="hidden sm:inline">Planifier un diagnostic</span>
+              <span className="sm:hidden">Diagnostic</span>
               <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
             </a>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden w-10 h-10 flex items-center justify-center text-violet"
+              className="md:hidden w-11 h-11 flex items-center justify-center text-violet rounded-lg hover:bg-violet/5 active:bg-violet/10 transition-colors"
               aria-label="Menu"
             >
-              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {menuOpen ? <X className="w-5 h-5" strokeWidth={1.5} /> : <Menu className="w-5 h-5" strokeWidth={1.5} />}
             </button>
           </div>
         </div>
@@ -82,14 +83,18 @@ export default function Navigation() {
 
       {/* Mobile menu overlay */}
       {menuOpen && (
-        <div className="fixed inset-0 z-[99] bg-ivory/98 backdrop-blur-lg md:hidden">
-          <div className="flex flex-col items-center justify-center h-full gap-8">
-            {navLinks.map((link) => (
+        <div
+          className="fixed inset-0 z-[99] bg-ivory/[0.98] backdrop-blur-xl md:hidden transition-all duration-300 ease-out"
+          style={{ animation: 'fadeIn 0.2s ease-out' }}
+        >
+          <div className="flex flex-col items-center justify-center h-full gap-6 sm:gap-8 pt-16">
+            {navLinks.map((link, i) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="font-serif text-2xl text-violet hover:text-gold transition-colors"
+                className="font-serif text-xl sm:text-2xl text-violet hover:text-gold transition-colors duration-300"
+                style={{ animationDelay: `${i * 50}ms` }}
               >
                 {link.label}
               </a>
@@ -99,7 +104,7 @@ export default function Navigation() {
               target="_blank"
               rel="noreferrer"
               onClick={() => setMenuOpen(false)}
-              className="mt-4 flex items-center gap-2 bg-violet text-ivory px-6 py-3 rounded-lg text-sm font-medium"
+              className="mt-4 flex items-center gap-2 bg-violet text-ivory px-6 py-3 rounded-lg text-sm font-medium btn-premium"
             >
               Planifier un diagnostic
               <ArrowRight className="w-4 h-4" strokeWidth={1.5} />

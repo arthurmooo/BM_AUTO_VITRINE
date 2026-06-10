@@ -91,7 +91,7 @@ function SliderField({ icon, label, value, onChange, min, max, step, unit, unitL
         {/* Slider row */}
         <div className="flex items-center gap-3 mt-3">
           {/* Slider */}
-          <div className="flex-1 relative h-6 flex items-center">
+          <div className="flex-1 relative h-8 sm:h-6 flex items-center">
             {/* Track background */}
             <div className="absolute inset-0 flex items-center">
               <div className="w-full h-[4px] bg-cream rounded-full overflow-hidden">
@@ -119,9 +119,9 @@ function SliderField({ icon, label, value, onChange, min, max, step, unit, unitL
             {/* Custom thumb (positioned) */}
             <div
               className="absolute top-1/2 -translate-y-1/2 pointer-events-none transition-all duration-150 ease-out"
-              style={{ left: `calc(${percentage}% - 10px)` }}
+              style={{ left: `calc(${percentage}% - 14px)` }}
             >
-              <div className="w-5 h-5 rounded-full bg-gold border-[2.5px] border-ivory shadow-[0_1px_6px_rgba(43,30,61,0.25)] slider-thumb-premium" />
+              <div className="w-7 h-7 sm:w-5 sm:h-5 rounded-full bg-gold border-[3px] sm:border-[2.5px] border-ivory shadow-[0_2px_8px_rgba(43,30,61,0.3)] slider-thumb-premium" />
             </div>
           </div>
 
@@ -129,15 +129,17 @@ function SliderField({ icon, label, value, onChange, min, max, step, unit, unitL
           <div className="flex items-center gap-1.5 flex-shrink-0">
             <button
               onClick={decrement}
-              className="w-7 h-7 rounded-md border border-lavender/30 flex items-center justify-center text-muted-gray hover:border-violet hover:text-violet transition-all active:scale-95"
+              className="w-9 h-9 sm:w-7 sm:h-7 rounded-md border border-lavender/30 flex items-center justify-center text-muted-gray hover:border-violet hover:text-violet transition-all active:scale-95"
+              aria-label="Diminuer"
             >
-              <Minus className="w-3 h-3" strokeWidth={1.5} />
+              <Minus className="w-4 h-4 sm:w-3 sm:h-3" strokeWidth={1.5} />
             </button>
             <button
               onClick={increment}
-              className="w-7 h-7 rounded-md border border-lavender/30 flex items-center justify-center text-muted-gray hover:border-violet hover:text-violet transition-all active:scale-95"
+              className="w-9 h-9 sm:w-7 sm:h-7 rounded-md border border-lavender/30 flex items-center justify-center text-muted-gray hover:border-violet hover:text-violet transition-all active:scale-95"
+              aria-label="Augmenter"
             >
-              <Plus className="w-3 h-3" strokeWidth={1.5} />
+              <Plus className="w-4 h-4 sm:w-3 sm:h-3" strokeWidth={1.5} />
             </button>
           </div>
         </div>
@@ -177,7 +179,7 @@ export default function CostSection() {
         {/* Headline */}
         <h2
           aria-label="Le manuel ne se voit pas dans vos outils. Il se voit dans vos marges."
-          className="font-serif text-display-sm text-violet text-center max-w-[78vw]"
+          className="font-serif text-display-sm text-violet text-center max-w-[95vw] sm:max-w-[78vw]"
           style={{ fontWeight: 400 }}
         >
           {headlineWords.map((word, i) => (
@@ -187,16 +189,16 @@ export default function CostSection() {
           ))}
         </h2>
 
-        <p className="text-center text-muted-gray text-[clamp(14px,1.15vw,16px)] leading-relaxed mt-4 max-w-[48vw]">
-          Quelques minutes perdues chaque jour par des profils qualifiés deviennent très vite une capacité invisible qui coûte cher.
+        <p className="text-center text-muted-gray text-[clamp(14px,1.15vw,16px)] leading-relaxed mt-4 max-w-[90vw] sm:max-w-[48vw]">
+          Quelques minutes perdues chaque jour par des profils qualifiés deviennent vite des semaines de capacité consommée.
         </p>
 
         {/* Calculator Card */}
         <div className="mt-8 w-full max-w-[880px] bg-ivory rounded-[12px] shadow-card border border-gold/15 overflow-hidden">
           <div className="flex flex-col lg:flex-row">
             {/* Left: Hypotheses */}
-            <div className="flex-1 p-8 lg:border-r border-gold/10">
-              <p className="micro-label text-muted-gray text-[10px] mb-8">VOS HYPOTHÈSES</p>
+            <div className="flex-1 px-5 py-6 sm:p-8 lg:border-r border-gold/10">
+              <p className="micro-label text-muted-gray text-[10px] mb-6 sm:mb-8">VOS HYPOTHÈSES</p>
 
               <div className="space-y-8">
                 <SliderField
@@ -221,7 +223,7 @@ export default function CostSection() {
                 />
                 <SliderField
                   icon={<Euro className="w-4 h-4 text-gold" strokeWidth={1.5} />}
-                  label="Coût horaire"
+                  label="Coût horaire chargé"
                   value={hourlyRate}
                   onChange={setHourlyRate}
                   min={30}
@@ -234,15 +236,15 @@ export default function CostSection() {
             </div>
 
             {/* Right: Impact */}
-            <div className="lg:w-[340px] flex-shrink-0 p-8 bg-cream/30">
-              <p className="micro-label text-muted-gray text-[10px] mb-8">VOTRE IMPACT ANNUEL</p>
+            <div className="lg:w-[340px] flex-shrink-0 px-5 py-6 sm:p-8 bg-cream/30">
+              <p className="micro-label text-muted-gray text-[10px] mb-6 sm:mb-8">IMPACT ESTIMÉ</p>
 
               <div className="space-y-7">
                 {/* Temps perdu */}
                 <div className="flex items-start gap-3">
                   <Timer className="w-5 h-5 text-gold mt-1 flex-shrink-0" strokeWidth={1.5} />
                   <div>
-                    <p className="text-sm text-muted-gray">Temps perdu / an</p>
+                    <p className="text-sm text-muted-gray">Temps perdu par an</p>
                     <p className="font-serif text-[clamp(36px,3vw,48px)] text-violet font-light leading-tight tabular-nums">
                       <AnimatedNumber value={hoursPerYear} /> <span className="text-lg text-muted-gray font-sans">heures</span>
                     </p>
@@ -256,7 +258,7 @@ export default function CostSection() {
                 <div className="flex items-start gap-3">
                   <Coins className="w-5 h-5 text-gold mt-1 flex-shrink-0" strokeWidth={1.5} />
                   <div>
-                    <p className="text-sm text-muted-gray">Coût annuel</p>
+                    <p className="text-sm text-muted-gray">Coût annuel estimé</p>
                     <p className="font-serif text-[clamp(36px,3vw,48px)] text-violet font-light leading-tight tabular-nums">
                       <AnimatedNumber value={Math.round(annualCost)} /> <span className="text-lg text-muted-gray font-sans">€</span>
                     </p>
@@ -270,7 +272,7 @@ export default function CostSection() {
                 <div className="flex items-start gap-3">
                   <UserCheck className="w-5 h-5 text-gold mt-1 flex-shrink-0" strokeWidth={1.5} />
                   <div>
-                    <p className="text-sm text-muted-gray">Équivalent capacité perdue</p>
+                    <p className="text-sm text-muted-gray">Capacité immobilisée</p>
                     <p className="font-serif text-2xl text-violet font-light mt-1 tabular-nums">
                       <AnimatedValue value={etpEquivalent} /> <span className="text-sm text-muted-gray font-sans">ETP</span>
                     </p>

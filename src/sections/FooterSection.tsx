@@ -2,7 +2,7 @@ import { Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router';
 
 const LINKEDIN_URL = 'https://www.linkedin.com/company/bm-automation/posts/?feedView=all';
-const CONTACT_EMAIL = 'contact@bmautomation.fr';
+const CONTACT_EMAIL = 'contact@bm-automation-france.com';
 
 /* ------------------------------------------------------------------ */
 /*  Footer — Institutional Ivory Signature                             */

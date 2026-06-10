@@ -10,14 +10,14 @@ export default function MethodSection() {
       title: 'Cartographier',
       subtitle: 'LE PROCESS RÉEL',
       description:
-        "Nous cartographions vos flux réels :\nfichiers, emails, CRM, règles métier\net points de décision.",
+        "Nous analysons vos flux : fichiers,\nemails, CRM, validations, exceptions\net points de décision.",
       image: '/assets/methode-cartographie-normalized.png',
       alt: 'Cartographie des outils et process',
     },
     {
       number: '2',
       title: 'Identifier',
-      subtitle: 'LES FICTIONS MANUELLES',
+      subtitle: 'LES FRICTIONS MANUELLES',
       description:
         "Nous isolons les relances, doubles saisies,\nrecherches et reconstructions qui\nconsomment du temps qualifié.",
       image: '/assets/methode-frictions-normalized.png',
@@ -28,16 +28,16 @@ export default function MethodSection() {
       title: 'Construire',
       subtitle: 'LE SYSTÈME UTILE',
       description:
-        "Chaque automatisation répond à un besoin concret.",
+        "Chaque automatisation répond à un besoin précis, relié à vos outils.",
       image: '/assets/methode-systeme-normalized.png',
       alt: 'Construction du système automatisé',
     },
     {
       number: '4',
       title: 'Déployer',
-      subtitle: 'MESURER, AMÉLIORER',
+      subtitle: 'MESURER, AJUSTER',
       description:
-        "Nous déployons, mesurons le gain,\npuis ajustons le système sur vos\nusages réels.",
+        "Nous mettons en production,\nmesurons le gain, puis ajustons\nsur vos usages réels.",
       image: '/assets/methode-deploiement-normalized.png',
       alt: 'Déploiement et mesure des résultats',
     },
@@ -55,7 +55,7 @@ export default function MethodSection() {
 
         {/* Headline */}
         <h2
-          className="font-serif text-display-sm text-violet text-center max-w-[70vw] leading-tight"
+          className="font-serif text-display-sm text-violet text-center max-w-[95vw] sm:max-w-[70vw] leading-tight"
           style={{ fontWeight: 400 }}
         >
           Une méthode de cadrage,
@@ -64,10 +64,10 @@ export default function MethodSection() {
         </h2>
 
         {/* Subheadline */}
-        <p className="text-center text-muted-gray text-sm leading-relaxed mt-4 max-w-[520px]">
-          Nous partons de vos fichiers, outils, contraintes et de la réalité de votre process.
-          <br />
-          Pas de template. Juste un système utile, pensé pour votre contexte.
+        <p className="text-center text-muted-gray text-sm leading-relaxed mt-4 max-w-[90vw] sm:max-w-[520px]">
+          Nous partons de vos fichiers, outils, contraintes et usages réels.
+          <br className="hidden sm:block" />
+          Puis nous construisons seulement ce qui enlève une friction concrète.
         </p>
 
         {/* ===== Steps Grid ===== */}
@@ -87,7 +87,7 @@ export default function MethodSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 xl:gap-7">
             {steps.map((step) => (
-              <div key={step.number} className="method-step-card flex flex-col items-center text-center">
+              <div key={step.number} className="method-step-card flex flex-col items-center text-center px-2 sm:px-0">
                 {/* ===== TOP: Number + Text ===== */}
 
                 {/* Number circle */}
@@ -106,17 +106,17 @@ export default function MethodSection() {
                 </p>
 
                 {/* Description */}
-                <p className="min-h-[86px] text-[13px] text-muted-gray leading-relaxed whitespace-pre-line">
+                <p className="text-[13px] text-muted-gray leading-relaxed whitespace-pre-line min-h-[60px] sm:min-h-[86px]">
                   {step.description}
                 </p>
 
                 {/* ===== BOTTOM: Illustration Card ===== */}
                 <div className="mt-4 w-full flex items-start justify-center">
-                  <div className="rounded-[16px] w-full flex h-[clamp(184px,15.5vw,210px)] items-start justify-center overflow-visible">
+                  <div className="rounded-[16px] w-full flex h-[clamp(160px,15.5vw,210px)] sm:h-[clamp(184px,15.5vw,210px)] items-start justify-center overflow-visible">
                     <img
                       src={step.image}
                       alt={step.alt}
-                      className="h-[clamp(182px,15.3vw,208px)] w-[clamp(222px,18.8vw,255px)] max-w-none object-fill"
+                      className="h-[clamp(155px,15.3vw,208px)] sm:h-[clamp(182px,15.3vw,208px)] w-auto max-w-[90%] object-contain"
                       loading="lazy"
                     />
                   </div>
@@ -137,15 +137,14 @@ export default function MethodSection() {
                 Nous ne vendons pas un outil.
               </p>
               <p className="text-xs text-ivory/55 mt-0.5">
-                Nous construisons avec vous un système de travail durable, mesurable et
-                évolutif.
+                Nous construisons avec vous un système de travail durable, mesurable et adapté à votre contexte.
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-4 flex-shrink-0">
+          <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0 flex-wrap justify-center">
             {['Sur-mesure', 'Transparence', 'Résultats concrets'].map((badge, i) => (
               <div key={i} className="flex items-center gap-2">
-                {i > 0 && <div className="w-1 h-1 rounded-full bg-gold/40" />}
+                {i > 0 && <div className="w-1 h-1 rounded-full bg-gold/40 hidden sm:block" />}
                 <span className="text-[11px] text-ivory/60">{badge}</span>
               </div>
             ))}
