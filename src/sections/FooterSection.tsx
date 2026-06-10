@@ -42,7 +42,7 @@ export default function FooterSection() {
             <div className="flex flex-col items-center gap-3 sm:flex-row md:items-end">
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="group inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-violet/55 transition-colors duration-300 hover:text-violet"
+                className="group inline-flex items-center gap-1.5 whitespace-nowrap text-[9.5px] font-medium uppercase tracking-[0.06em] text-violet/55 transition-colors duration-300 hover:text-violet sm:gap-2 sm:text-xs sm:tracking-[0.14em]"
               >
                 <Mail className="h-3.5 w-3.5 text-gold/70 transition-transform duration-300 group-hover:-translate-y-0.5" strokeWidth={1.7} />
                 {CONTACT_EMAIL}
