@@ -22,42 +22,46 @@ const pages: Record<
     eyebrow: 'Informations légales',
     title: 'Mentions légales',
     intro:
-      "Cette page regroupe les informations relatives à l'éditeur du site BM Automation. Certaines mentions administratives doivent être complétées avec les informations définitives de la structure avant publication.",
+      "Cette page présente les informations relatives à l'édition, à l'hébergement et à l'utilisation du site BM Automation.",
     sections: [
       {
         title: 'Éditeur du site',
         body: [
-          'BM Automation',
-          'Structure portée par Arthur Mo et Romuald Bocquet.',
-          'Forme juridique, capital social, SIREN/SIRET, RCS et adresse du siège : à compléter avant publication.',
-          'Directeur de la publication : à compléter avant publication.',
+          'Le site est édité par BM Automation, studio français spécialisé dans la conception de systèmes d’automatisation sur mesure pour les équipes finance, M&A, conseil et opérations.',
+          'BM Automation est représentée par Arthur Mo et Romuald Bocquet.',
+          'Siège éditorial : Paris, France.',
+          "Immatriculation : en cours auprès du Registre du commerce et des sociétés de Paris.",
+          'Directeur de la publication : Arthur Mo.',
         ],
       },
       {
         title: 'Contact',
         body: [
-          'Adresse de contact provisoire : contact@bmautomation.fr.',
-          "Pour toute demande relative au site, à son contenu ou à l'exercice de vos droits, vous pouvez utiliser cette adresse de contact.",
+          'Contact : contact@bm-automation-france.com.',
+          "Cette adresse peut être utilisée pour toute demande relative au site, à son contenu, à une prise de contact commerciale ou à l'exercice de droits liés aux données personnelles.",
         ],
       },
       {
         title: 'Hébergement',
         body: [
-          "Hébergeur du site : à compléter selon le prestataire de déploiement retenu.",
-          "Les informations d'hébergement devront préciser la dénomination sociale, l'adresse et les coordonnées de l'hébergeur.",
+          'Le site est hébergé par Cloudflare, Inc.',
+          'Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, États-Unis.',
+          "Le site est déployé via Cloudflare Pages, service d'hébergement statique et de distribution de contenu.",
         ],
       },
       {
         title: 'Propriété intellectuelle',
         body: [
-          "L'ensemble des contenus présents sur ce site, incluant les textes, visuels, interfaces, éléments graphiques, logos et compositions, est protégé par le droit de la propriété intellectuelle.",
-          'Toute reproduction, représentation, modification ou diffusion sans autorisation préalable est interdite.',
+          "L'ensemble des contenus présents sur ce site, incluant les textes, visuels, interfaces, éléments graphiques, logos, compositions et exemples de parcours, est protégé par le droit de la propriété intellectuelle.",
+          "Toute reproduction, représentation, adaptation, modification ou diffusion, totale ou partielle, sans autorisation préalable de BM Automation, est interdite.",
+          "Les cas d'usage, écrans et illustrations présentés sur le site ont une vocation de démonstration éditoriale. Ils ne donnent accès à aucune donnée client réelle.",
         ],
       },
       {
         title: 'Responsabilité',
         body: [
-          "BM Automation s'efforce de fournir des informations claires et à jour. Les contenus du site ont une vocation de présentation et ne constituent pas une offre contractuelle ferme.",
+          "BM Automation s'efforce de fournir des informations claires, fiables et à jour. Les contenus du site ont une vocation de présentation et ne constituent pas une offre contractuelle ferme.",
+          "Les informations relatives aux méthodes, cas d'usage, gains de temps ou exemples de systèmes sont présentées à titre indicatif. Tout engagement opérationnel fait l'objet d'un cadrage spécifique.",
           "Des liens externes peuvent renvoyer vers des services tiers, notamment Calendly ou LinkedIn. BM Automation n'est pas responsable du contenu, du fonctionnement ou des politiques de confidentialité de ces services.",
         ],
       },
@@ -72,15 +76,17 @@ const pages: Record<
       {
         title: 'Données collectées',
         body: [
-          "Le site vitrine BM Automation ne comporte pas, à ce stade, de formulaire de collecte interne.",
-          "Lorsque vous contactez BM Automation par email ou via un lien de planification externe, les données que vous transmettez volontairement peuvent inclure votre nom, votre adresse email, votre entreprise, votre fonction, votre message et les informations utiles à l'échange.",
+          "Le site vitrine BM Automation ne comporte pas de formulaire de collecte interne. Les échanges se font principalement par email ou via un lien de planification externe.",
+          "Lorsque vous contactez BM Automation, les données transmises volontairement peuvent inclure votre nom, votre adresse email, votre entreprise, votre fonction, votre message, vos disponibilités et les informations utiles à la compréhension de votre besoin.",
+          "BM Automation ne demande pas de transmettre de données confidentielles, financières, personnelles sensibles ou couvertes par un accord de confidentialité avant la mise en place d'un cadre contractuel adapté.",
         ],
       },
       {
         title: 'Finalités',
         body: [
-          'Les données sont utilisées pour répondre aux demandes de contact, préparer un échange de cadrage, qualifier un besoin opérationnel et assurer le suivi de la relation professionnelle.',
-          'Ces traitements reposent sur votre demande de contact, sur l’intérêt légitime de BM Automation à gérer ses échanges professionnels, ou sur les mesures précontractuelles prises à votre demande.',
+          'Les données sont utilisées pour répondre aux demandes de contact, préparer un échange de cadrage, qualifier un besoin opérationnel, organiser un rendez-vous et assurer le suivi de la relation professionnelle.',
+          "Ces traitements reposent sur votre demande de contact, sur l'intérêt légitime de BM Automation à gérer ses échanges professionnels, ou sur les mesures précontractuelles prises à votre demande.",
+          "BM Automation n'utilise pas ces données pour de la publicité comportementale et ne revend pas les données transmises.",
         ],
       },
       {
@@ -88,27 +94,32 @@ const pages: Record<
         body: [
           "Le bouton de planification renvoie vers Calendly, service tiers disposant de ses propres conditions d'utilisation et de sa propre politique de confidentialité.",
           'Le footer contient également un lien vers LinkedIn. La consultation de ces services est régie par leurs propres règles.',
+          "Le site utilise des polices servies par Google Fonts. Lors du chargement du site, le navigateur peut établir une connexion avec les serveurs de Google afin d'afficher correctement les typographies.",
+          "L'hébergement et la distribution du site reposent sur Cloudflare Pages. Cloudflare peut traiter certaines données techniques nécessaires à la sécurité, à la disponibilité et à la performance du site.",
         ],
       },
       {
         title: 'Cookies et mesure d’audience',
         body: [
-          "À ce stade, aucun outil de mesure d'audience ou traceur publicitaire n'est configuré dans le code du site.",
-          "Si des cookies ou outils statistiques sont ajoutés ultérieurement, cette politique devra être mise à jour et les visiteurs devront être informés conformément aux règles applicables.",
+          "Aucun outil de mesure d'audience propriétaire, pixel publicitaire ou traceur marketing n'est configuré dans le code du site.",
+          "Les seuls traitements techniques susceptibles d'intervenir sont liés au fonctionnement normal du site, à son hébergement, à la sécurité de la connexion et au chargement des ressources nécessaires à l'affichage.",
+          "Si des cookies ou outils statistiques sont ajoutés ultérieurement, cette politique sera mise à jour et les visiteurs seront informés conformément aux règles applicables.",
         ],
       },
       {
         title: 'Durée de conservation',
         body: [
-          'Les données liées aux demandes de contact sont conservées pendant la durée nécessaire au traitement de la demande et au suivi de la relation professionnelle.',
-          'Les durées pourront être adaptées selon les obligations légales, contractuelles ou comptables applicables.',
+          'Les données liées aux demandes de contact sont conservées pendant la durée nécessaire au traitement de la demande, au suivi de la relation professionnelle et à la gestion des échanges précontractuels.',
+          "Lorsqu'une mission est engagée, certaines informations peuvent être conservées pendant la durée nécessaire à l'exécution de la relation contractuelle, puis archivées selon les obligations légales, comptables ou probatoires applicables.",
+          "En l'absence de suite donnée à un échange, les informations de contact peuvent être supprimées ou archivées dans un délai raisonnable.",
         ],
       },
       {
         title: 'Vos droits',
         body: [
-          "Conformément au RGPD et à la loi Informatique et Libertés, vous pouvez demander l'accès, la rectification, l'effacement, la limitation ou l'opposition au traitement de vos données personnelles.",
-          'Vous pouvez exercer ces droits en écrivant à contact@bmautomation.fr. Vous pouvez également saisir la CNIL si vous estimez que vos droits ne sont pas respectés.',
+          "Conformément au RGPD et à la loi Informatique et Libertés, vous pouvez demander l'accès, la rectification, l'effacement, la limitation, la portabilité ou l'opposition au traitement de vos données personnelles.",
+          'Vous pouvez exercer ces droits en écrivant à contact@bm-automation-france.com.',
+          "BM Automation répond aux demandes dans les meilleurs délais et, en tout état de cause, dans les conditions prévues par la réglementation applicable. Vous pouvez également saisir la CNIL si vous estimez que vos droits ne sont pas respectés.",
         ],
       },
     ],
@@ -122,28 +133,32 @@ const pages: Record<
       {
         title: 'Objet du site',
         body: [
-          "Le site BM Automation présente une activité de conception de systèmes d'automatisation sur mesure pour des organisations confrontées à des tâches manuelles dispersées entre fichiers, emails, CRM, documents et outils métier.",
-          "Le site n'est pas une plateforme SaaS en libre-service et ne propose pas d'achat en ligne.",
+          "Le site BM Automation présente une activité de conception de systèmes d'automatisation sur mesure pour des organisations confrontées à des tâches manuelles dispersées entre fichiers, emails, CRM, documents, reporting et outils métier.",
+          "Le site n'est pas une plateforme SaaS en libre-service, ne propose pas d'achat en ligne et ne donne pas accès à un service logiciel standardisé.",
+          "Les contenus décrivent une approche, des exemples d'usage et une manière de cadrer des systèmes opérationnels adaptés au contexte de chaque client.",
         ],
       },
       {
         title: 'Accès au site',
         body: [
-          "Le site est accessible librement. BM Automation peut faire évoluer, suspendre ou interrompre tout ou partie du site pour maintenance, amélioration ou contrainte technique.",
-          "L'utilisateur s'engage à ne pas perturber le fonctionnement du site ni à tenter d'accéder à des systèmes ou données non autorisés.",
+          "Le site est accessible librement, sous réserve des contraintes techniques liées à Internet, à l'hébergement ou à la maintenance.",
+          "BM Automation peut faire évoluer, suspendre ou interrompre tout ou partie du site pour maintenance, amélioration, sécurité ou contrainte technique.",
+          "L'utilisateur s'engage à ne pas perturber le fonctionnement du site, à ne pas tenter d'accéder à des systèmes ou données non autorisés, et à ne pas utiliser le site d'une manière susceptible de porter atteinte à BM Automation ou à des tiers.",
         ],
       },
       {
         title: 'Prise de contact et diagnostic',
         body: [
           "La planification d'un diagnostic ou l'envoi d'un email ne crée pas automatiquement de relation contractuelle.",
-          "Toute mission éventuelle fera l'objet d'un cadrage spécifique, d'une proposition dédiée et de conditions contractuelles adaptées au contexte du client.",
+          "Le diagnostic initial vise à comprendre les flux existants, les points de friction, les personnes concernées et les gains potentiels. Il ne constitue pas un audit complet ni une garantie de résultat.",
+          "Toute mission éventuelle fait l'objet d'un cadrage spécifique, d'une proposition dédiée et de conditions contractuelles adaptées au contexte du client.",
         ],
       },
       {
         title: 'Informations publiées',
         body: [
           "Les contenus du site sont fournis à titre d'information générale. Ils peuvent évoluer sans préavis.",
+          "Les exemples, estimations, captures d'interface et cas d'usage présentés sur le site ont une vocation illustrative. Ils ne préjugent pas du périmètre, du délai, du coût ou du résultat d'une mission réelle.",
           "BM Automation s'efforce de maintenir des informations exactes, mais ne garantit pas l'absence totale d'erreurs, d'omissions ou d'indisponibilités.",
         ],
       },
@@ -158,7 +173,8 @@ const pages: Record<
         title: 'Droit applicable',
         body: [
           'Les présentes conditions sont régies par le droit français.',
-          'En cas de litige, les parties chercheront d’abord une solution amiable avant toute procédure.',
+          "En cas de difficulté liée à l'utilisation du site, les parties chercheront d'abord une solution amiable avant toute procédure.",
+          "Tout litige relatif à une mission commerciale distincte sera régi par les documents contractuels applicables à cette mission.",
         ],
       },
     ],
@@ -220,7 +236,7 @@ export default function LegalPage({ type }: { type: LegalPageType }) {
                 {page.intro}
               </p>
               <p className="mt-4 text-xs uppercase tracking-[0.14em] text-gold/75">
-                Dernière mise à jour : 24 mai 2026
+                Dernière mise à jour : 10 juin 2026
               </p>
             </div>
 
