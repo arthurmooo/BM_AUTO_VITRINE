@@ -16,10 +16,10 @@ export default function BeforeAfterSection() {
   return (
     <section
       id="transformation"
-      className="relative w-full py-[12vh] bg-ivory z-30"
+      className="relative w-full bg-ivory z-30 overflow-hidden py-[10vh]"
     >
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center px-[6vw]">
+      <div className="relative z-10 flex flex-col items-center px-[5vw]">
         {/* Micro label */}
         <div className="flex items-center gap-4 mb-4">
           <div className="w-8 h-[1px] bg-gold/40" />
@@ -29,12 +29,14 @@ export default function BeforeAfterSection() {
 
         {/* Headline */}
         <h2
-          className="font-serif text-display-sm text-violet text-center max-w-[70vw] mb-2"
+          aria-label="Vos outils restent. Le manuel disparaît."
+          className="font-serif text-display-sm text-violet text-center max-w-[78vw] mb-0"
           style={{ fontWeight: 400 }}
         >
           {headlineWords.map((word, i) => (
             <span
               key={i}
+              aria-hidden="true"
               className={`inline-block mr-[0.3em] ${word.gold ? 'text-gold' : ''}`}
             >
               {word.text}
@@ -42,51 +44,46 @@ export default function BeforeAfterSection() {
           ))}
         </h2>
 
+        <p className="mt-4 max-w-[620px] text-center text-[clamp(14px,1.1vw,16px)] leading-relaxed text-muted-gray">
+          Vos outils ne changent pas. Ce qui disparaît, c’est la circulation manuelle entre eux.
+        </p>
+
         {/* Cards row */}
-        <div className="mt-10 w-full max-w-[1200px] relative flex flex-col lg:flex-row items-center">
-          {/* AVANT — scale 1.32, large right padding for spacing */}
+        <div className="mt-8 w-full max-w-[1620px] relative grid grid-cols-1 lg:mt-[5vh] lg:grid-cols-[1.12fr_104px_1.2fr] items-center gap-y-8 lg:gap-y-10 lg:gap-x-1">
+          {/* AVANT */}
           <div
-            className="flex-1 relative flex items-center justify-center pr-16 lg:pr-24 overflow-visible"
-            style={{ minHeight: '380px' }}
+            className="transformation-panel relative flex min-h-[220px] items-center justify-center overflow-visible sm:min-h-[270px] lg:min-h-[430px]"
           >
             <img
               src="/assets/chaos-avant.png"
               alt="Avant : chaos opérationnel"
-              className="w-full h-auto object-contain"
-              style={{ transform: 'scale(1.32)' }}
+              className="h-auto w-[min(820px,98vw)] object-contain lg:w-[142%]"
               loading="lazy"
             />
           </div>
 
-          {/* Stylized connector — centered between the two images */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 flex flex-col items-center pointer-events-none">
-            {/* Vertical line above */}
-            <div className="w-[1px] h-8 bg-gradient-to-b from-transparent to-gold/60" />
-            {/* Gold circle with arrow */}
-            <div className="w-11 h-11 rounded-full bg-gold flex items-center justify-center shadow-[0_0_20px_rgba(184,155,94,0.35)] border border-ivory/30">
+          {/* Stylized connector */}
+          <div className="relative z-50 hidden h-[310px] flex-col items-center justify-center pointer-events-none lg:flex">
+            <div className="w-[1px] flex-1 bg-gradient-to-b from-transparent via-gold/45 to-gold/55" />
+            <div className="w-14 h-14 rounded-full bg-gold flex items-center justify-center shadow-[0_16px_34px_rgba(184,155,94,0.28)] border border-ivory/50">
               <ArrowRight className="w-5 h-5 text-ivory" strokeWidth={2} />
             </div>
-            {/* Vertical line below */}
-            <div className="w-[1px] h-8 bg-gradient-to-b from-gold/60 to-transparent" />
-            {/* Label */}
-            <span className="micro-label text-violet/50 text-[9px] mt-2 tracking-[0.2em]">VERS</span>
+            <div className="w-[1px] flex-1 bg-gradient-to-b from-gold/55 via-gold/35 to-transparent" />
+            <span className="micro-label text-violet/50 text-[10px] mt-3 tracking-[0.22em]">VERS</span>
           </div>
 
-          {/* APRÈS — scale 1.265, large left padding for spacing */}
+          {/* APRÈS */}
           <div
-            className="flex-1 relative flex items-center justify-center pl-16 lg:pl-24 overflow-visible"
-            style={{ minHeight: '380px' }}
+            className="transformation-panel relative flex min-h-[220px] items-center justify-center overflow-visible sm:min-h-[270px] lg:min-h-[410px]"
           >
             <img
               src="/assets/chaos-apres.png"
               alt="Après : pilotage opérationnel consolidé"
-              className="w-full h-auto object-contain"
-              style={{ transform: 'scale(1.265)' }}
+              className="h-auto w-[min(860px,96vw)] object-contain lg:w-[112%]"
               loading="lazy"
             />
           </div>
         </div>
-
 
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router';
 import Navigation from './sections/Navigation';
 import HeroSection from './sections/HeroSection';
 import CostSection from './sections/CostSection';
@@ -5,12 +6,12 @@ import BeforeAfterSection from './sections/BeforeAfterSection';
 import UseCasesSection from './sections/UseCasesSection';
 import CaseStudySection from './sections/CaseStudySection';
 import MethodSection from './sections/MethodSection';
-import TrustSection from './sections/TrustSection';
 import CTASection from './sections/CTASection';
 import FooterSection from './sections/FooterSection';
 import SectionTransition from './sections/SectionTransition';
+import LegalPage from './pages/LegalPage';
 
-export default function App() {
+function HomePage() {
   return (
     <div className="relative">
       {/* Grain overlay */}
@@ -59,23 +60,29 @@ export default function App() {
           <MethodSection />
         </div>
 
-        {/* Section 7: Trust / Security */}
-        <div id="security">
-          <TrustSection />
-        </div>
-
         {/* Transition 3: ivory → violet (CTA final) */}
         {/* Entrée directe et impactante, pas de label redondant */}
         <SectionTransition variant="enter-violet" />
 
-        {/* Section 8: Final CTA */}
+        {/* Section 7: Final CTA */}
         <div id="contact">
           <CTASection />
         </div>
 
-        {/* Section 9: Footer */}
+        {/* Section 8: Footer */}
         <FooterSection />
       </main>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/mentions-legales" element={<LegalPage type="mentions-legales" />} />
+      <Route path="/confidentialite" element={<LegalPage type="confidentialite" />} />
+      <Route path="/conditions" element={<LegalPage type="conditions" />} />
+    </Routes>
   );
 }

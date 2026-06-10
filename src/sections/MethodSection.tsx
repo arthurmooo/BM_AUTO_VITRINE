@@ -1,4 +1,4 @@
-import { Shield } from 'lucide-react';
+import { ArrowRight, Shield } from 'lucide-react';
 
 /* ------------------------------------------------------------------ */
 /*  Method Section — Pixel-perfect Reference Match                     */
@@ -10,8 +10,8 @@ export default function MethodSection() {
       title: 'Cartographier',
       subtitle: 'LE PROCESS RÉEL',
       description:
-        "Nous analysons vos flux, fichiers,\nvos outils et vos règles métier.\nObjectif : comprendre votre réalité,\npas la théoriser.",
-      image: '/assets/methode-cartographie.png',
+        "Nous cartographions vos flux réels :\nfichiers, emails, CRM, règles métier\net points de décision.",
+      image: '/assets/methode-cartographie-normalized.png',
       alt: 'Cartographie des outils et process',
     },
     {
@@ -19,8 +19,8 @@ export default function MethodSection() {
       title: 'Identifier',
       subtitle: 'LES FICTIONS MANUELLES',
       description:
-        "Nous mettons en évidence les points\nde rupture, gaspillages et pertes de temps\nqui freinent la performance.",
-      image: '/assets/methode-frictions.png',
+        "Nous isolons les relances, doubles saisies,\nrecherches et reconstructions qui\nconsomment du temps qualifié.",
+      image: '/assets/methode-frictions-normalized.png',
       alt: 'Frictions manuelles identifiées',
     },
     {
@@ -28,8 +28,8 @@ export default function MethodSection() {
       title: 'Construire',
       subtitle: 'LE SYSTÈME UTILE',
       description:
-        "Nous concevons un système clair, simple\net adapté à vos usages. Chaque automatisation\nrépond à un besoin concret.",
-      image: '/assets/methode-systeme.png',
+        "Chaque automatisation répond à un besoin concret.",
+      image: '/assets/methode-systeme-normalized.png',
       alt: 'Construction du système automatisé',
     },
     {
@@ -37,8 +37,8 @@ export default function MethodSection() {
       title: 'Déployer',
       subtitle: 'MESURER, AMÉLIORER',
       description:
-        "Nous déployons avec vous, mesurons\nl'impact et faisons évoluer le système\nen continu.",
-      image: '/assets/methode-deploiement.png',
+        "Nous déployons, mesurons le gain,\npuis ajustons le système sur vos\nusages réels.",
+      image: '/assets/methode-deploiement-normalized.png',
       alt: 'Déploiement et mesure des résultats',
     },
   ];
@@ -47,10 +47,10 @@ export default function MethodSection() {
     <section id="method" className="relative w-full py-[14vh] bg-ivory z-60">
       <div className="relative z-10 flex flex-col items-center px-[6vw]">
         {/* Micro label */}
-        <div className="flex items-center gap-3 mb-5">
-          <span className="text-[10px] text-gold/60 tracking-wider">06</span>
-          <div className="w-4 h-[1px] bg-gold/30" />
+        <div className="flex items-center gap-4 mb-5">
+          <div className="w-8 h-[1px] bg-gold/30" />
           <span className="micro-label text-gold tracking-[0.18em]">NOTRE MÉTHODE</span>
+          <div className="w-8 h-[1px] bg-gold/30" />
         </div>
 
         {/* Headline */}
@@ -71,18 +71,28 @@ export default function MethodSection() {
         </p>
 
         {/* ===== Steps Grid ===== */}
-        <div className="mt-10 w-full max-w-[1000px] relative">
-          {/* Dashed gold connector line — exact ref style */}
-          <div className="hidden md:block absolute top-[22px] left-[calc(12.5%+22px)] right-[calc(12.5%+22px)] border-t border-dashed border-gold/20" />
+        <div className="mt-10 w-full max-w-[1080px] relative">
+          {/* Connector line */}
+          <div className="hidden md:block absolute top-[22px] left-[calc(12.5%+22px)] right-[calc(12.5%+22px)] border-t border-dashed border-gold/55" />
+          {[25, 50, 75].map((left) => (
+            <div
+              key={left}
+              className="hidden md:flex absolute top-[11px] z-20 h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full bg-ivory text-gold shadow-[0_0_0_6px_rgba(245,242,235,0.9)]"
+              style={{ left: `${left}%` }}
+              aria-hidden="true"
+            >
+              <ArrowRight className="h-4 w-4" strokeWidth={1.8} />
+            </div>
+          ))}
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 xl:gap-7">
             {steps.map((step) => (
-              <div key={step.number} className="flex flex-col items-center text-center">
+              <div key={step.number} className="method-step-card flex flex-col items-center text-center">
                 {/* ===== TOP: Number + Text ===== */}
 
                 {/* Number circle */}
-                <div className="w-11 h-11 rounded-full border border-gold/25 flex items-center justify-center bg-ivory relative z-10 mb-4">
-                  <span className="font-serif text-xl text-violet font-light">{step.number}</span>
+                <div className="w-11 h-11 rounded-full border border-gold/45 flex items-center justify-center bg-ivory relative z-10 mb-4 shadow-[0_0_0_5px_rgba(245,242,235,0.95)]">
+                  <span className="font-serif text-xl text-gold font-light">{step.number}</span>
                 </div>
 
                 {/* Title */}
@@ -96,17 +106,17 @@ export default function MethodSection() {
                 </p>
 
                 {/* Description */}
-                <p className="text-[13px] text-muted-gray leading-relaxed whitespace-pre-line">
+                <p className="min-h-[86px] text-[13px] text-muted-gray leading-relaxed whitespace-pre-line">
                   {step.description}
                 </p>
 
                 {/* ===== BOTTOM: Illustration Card ===== */}
-                <div className="mt-4 w-full flex items-end justify-center">
-                  <div className="bg-cream/70 rounded-[16px] p-3 w-full flex items-center justify-center min-h-[140px]">
+                <div className="mt-4 w-full flex items-start justify-center">
+                  <div className="rounded-[16px] w-full flex h-[clamp(184px,15.5vw,210px)] items-start justify-center overflow-visible">
                     <img
                       src={step.image}
                       alt={step.alt}
-                      className="w-[160px] h-auto object-contain"
+                      className="h-[clamp(182px,15.3vw,208px)] w-[clamp(222px,18.8vw,255px)] max-w-none object-fill"
                       loading="lazy"
                     />
                   </div>
@@ -117,7 +127,7 @@ export default function MethodSection() {
         </div>
 
         {/* ===== Bottom Banner ===== */}
-        <div className="mt-12 w-full max-w-[1000px] bg-violet rounded-[14px] p-5 flex flex-col md:flex-row items-center gap-4">
+        <div className="method-proof-banner mt-12 w-full max-w-[1080px] bg-violet rounded-[14px] p-5 flex flex-col md:flex-row items-center gap-4">
           <div className="flex items-center gap-3 flex-1">
             <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0">
               <Shield className="w-5 h-5 text-gold" strokeWidth={1.5} />

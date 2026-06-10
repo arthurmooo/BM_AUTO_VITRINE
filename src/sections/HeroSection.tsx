@@ -1,90 +1,9 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, CheckCircle2, Circle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
-
-/* ------------------------------------------------------------------ */
-/*  Synthèse Card — operational UI mockup                             */
-/* ------------------------------------------------------------------ */
-function SyntheseCard() {
-  return (
-    <div
-      className="w-full max-w-[720px] mx-auto bg-ivory/95 backdrop-blur-sm rounded-[10px] shadow-card border border-gold/20 overflow-hidden"
-    >
-      {/* Card Header */}
-      <div className="px-6 pt-5 pb-3 flex items-center justify-between">
-        <div>
-          <h3 className="font-serif text-xl text-ink font-medium">Synthèse</h3>
-          <p className="text-xs text-muted-gray mt-0.5">Vue consolidée — Avancement — Confirmations</p>
-        </div>
-        <div className="w-8 h-8 rounded-full bg-violet/10 flex items-center justify-center">
-          <div className="w-2 h-2 rounded-full bg-gold" />
-        </div>
-      </div>
-
-      {/* Gold accent line */}
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-gold/40 to-transparent mx-6" />
-
-      {/* Card Body */}
-      <div className="px-6 py-4">
-        {/* Progress metric */}
-        <div className="flex items-end justify-between mb-3">
-          <div>
-            <p className="micro-label text-muted-gray mb-1">Avancement global</p>
-            <p className="font-serif text-4xl text-violet font-light">68<span className="text-2xl text-gold">%</span></p>
-          </div>
-          <div className="text-right">
-            <p className="text-xs text-muted-gray">Phase en cours</p>
-            <p className="text-sm text-ink font-medium">Confirmations</p>
-          </div>
-        </div>
-
-        {/* Progress bar */}
-        <div className="h-1.5 bg-cream rounded-full overflow-hidden mb-5">
-          <div
-            className="h-full rounded-full"
-            style={{
-              width: '68%',
-              background: 'linear-gradient(90deg, #2B1E3D 0%, #2B1E3D 85%, #B89B5E 100%)',
-            }}
-          />
-        </div>
-
-        {/* Checklist */}
-        <div className="space-y-2.5">
-          {[
-            { label: 'Collecte & intégration des données', done: true },
-            { label: 'Rapprochements comptables', done: true },
-            { label: 'Contrôles & validations', done: false },
-            { label: 'Livrables & reporting', done: false },
-          ].map((item, i) => (
-            <div key={i} className="flex items-center gap-3">
-              {item.done ? (
-                <CheckCircle2 className="w-4 h-4 text-violet flex-shrink-0" strokeWidth={1.5} />
-              ) : (
-                <Circle className="w-4 h-4 text-lavender flex-shrink-0" strokeWidth={1.5} />
-              )}
-              <span className={`text-sm ${item.done ? 'text-ink' : 'text-muted-gray'}`}>
-                {item.label}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Card Footer */}
-      <div className="px-6 py-3 bg-cream/50 border-t border-gold/10 flex items-center justify-between">
-        <div>
-          <p className="micro-label text-muted-gray">Prochaine étape</p>
-          <p className="text-sm text-ink font-medium">Revue des ajustements</p>
-        </div>
-        <ArrowRight className="w-4 h-4 text-gold" strokeWidth={1.5} />
-      </div>
-    </div>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /*  Hero Section                                                       */
@@ -200,12 +119,14 @@ export default function HeroSection() {
         {/* Main headline */}
         <h1
           ref={headlineRef}
+          aria-label="Vos équipes sont payées pour décider. Pas pour recopier."
           className="font-serif text-display text-violet text-center mt-[5vh] px-[8vw] max-w-[90vw]"
           style={{ fontWeight: 400 }}
         >
           {headlineWords.map((word, i) => (
             <span
               key={i}
+              aria-hidden="true"
               className={`word inline-block mr-[0.3em] ${word.gold ? 'text-gold' : ''}`}
             >
               {word.text}
@@ -228,25 +149,37 @@ export default function HeroSection() {
           className="flex items-center gap-4 mt-7 flex-wrap justify-center"
           style={{ opacity: 0 }}
         >
-          <button className="btn-premium group flex items-center gap-2 bg-violet text-ivory px-6 py-3 rounded-lg text-sm font-medium hover:bg-violet/90">
+          <a
+            href="/#cost"
+            className="btn-premium group flex items-center gap-2 bg-violet text-ivory px-6 py-3 rounded-lg text-sm font-medium hover:bg-violet/90"
+          >
             Identifier un gain de temps
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
-          </button>
-          <button className="nav-link-premium text-ink text-sm font-medium px-4 py-3 transition-colors duration-300 hover:text-violet">
+          </a>
+          <a
+            href="/#method"
+            className="nav-link-premium text-ink text-sm font-medium px-4 py-3 transition-colors duration-300 hover:text-violet"
+          >
             Voir la méthode
-          </button>
+          </a>
         </div>
 
         {/* Spacer */}
-        <div className="flex-1 min-h-[40px]" />
+        <div className="h-[28px] md:h-[36px]" />
 
-        {/* Floating UI Card — Synthèse */}
+        {/* Central product illustration */}
         <div
           ref={cardRef}
-          className="w-[min(720px,78vw)]"
-          style={{ opacity: 0, marginBottom: 'calc(5vh - 20px)' }}
+          className="w-[min(2772px,121vw)]"
+          style={{ opacity: 0, marginBottom: 'calc(4vh - 20px)' }}
         >
-          <SyntheseCard />
+          <img
+            src="/assets/hero-mission-alpha-industries.png"
+            alt="Interface BM Automation montrant une mission client avec collecte, traitement, pilotage et transmission."
+            className="mx-auto block w-full h-auto max-h-[109vh] object-contain"
+            loading="eager"
+            decoding="async"
+          />
         </div>
       </div>
     </section>

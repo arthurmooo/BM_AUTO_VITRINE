@@ -176,11 +176,12 @@ export default function CostSection() {
 
         {/* Headline */}
         <h2
+          aria-label="Le manuel ne se voit pas dans vos outils. Il se voit dans vos marges."
           className="font-serif text-display-sm text-violet text-center max-w-[78vw]"
           style={{ fontWeight: 400 }}
         >
           {headlineWords.map((word, i) => (
-            <span key={i} className="inline-block mr-[0.3em]">
+            <span key={i} aria-hidden="true" className="inline-block mr-[0.3em]">
               {word}
             </span>
           ))}
@@ -283,10 +284,13 @@ export default function CostSection() {
 
         {/* CTA */}
         <div className="mt-6">
-          <button className="btn-premium group flex items-center gap-2 bg-violet text-ivory px-6 py-3 rounded-lg text-sm font-medium hover:bg-violet/90">
+          <a
+            href="/#contact"
+            className="btn-premium group flex items-center gap-2 bg-violet text-ivory px-6 py-3 rounded-lg text-sm font-medium hover:bg-violet/90"
+          >
             Identifier un gain de temps
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
-          </button>
+          </a>
         </div>
       </div>
     </section>

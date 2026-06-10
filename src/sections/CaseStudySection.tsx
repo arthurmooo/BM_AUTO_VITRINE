@@ -1,272 +1,320 @@
-import { Building2, Users, MessageSquare, History, ShieldCheck } from 'lucide-react';
+import { Building2, History, MessageSquare, ShieldCheck, Users } from 'lucide-react';
 
-/* ------------------------------------------------------------------ */
-/*  Case Study — M&A Bento (exact layout reference)                    */
-/* ------------------------------------------------------------------ */
+const cardBase =
+  'case-study-card relative overflow-hidden rounded-[22px] border border-white/[0.08] bg-[#251936] shadow-[0_18px_48px_rgba(17,10,28,0.18)]';
+
+const cardGlow = '';
+
+const assetClass = 'relative z-10 object-contain drop-shadow-[0_22px_46px_rgba(0,0,0,0.28)]';
+
+const pipelineSteps = [
+  { label: 'CADRAGE', count: 3, active: false },
+  { label: 'DD', count: 5, active: true },
+  { label: 'SIGNATURES', count: 4, active: false },
+  { label: 'CLOSING', count: 3, active: false },
+];
+
+const missions = [
+  { name: 'Mission Alpha', progress: 65, tone: 'gold' },
+  { name: 'Mission Bêta', progress: 30, tone: 'lavender' },
+  { name: 'Mission Gamma', progress: 85, tone: 'gold' },
+];
+
+const proofChips = ['15 workflows MVP', 'Portail client', 'Sync CRM', 'Historique complet'];
+
+const trustChips = ['Données isolées par client', 'Accès par rôle', 'Traçabilité', 'Hébergement EU'];
+
 export default function CaseStudySection() {
   return (
     <section
-      id="casestudy"
-      className="relative w-full py-[14vh] z-50"
+      id="case-study"
+      className="relative z-50 w-full overflow-hidden py-20 sm:py-24 lg:py-28"
       style={{ backgroundColor: '#2B1E3D' }}
     >
-      {/* Ombre subtile au sommet — transition éditoriale */}
-      <div
-        className="absolute top-0 left-0 right-0 h-[4px] pointer-events-none"
-        style={{
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.07) 0%, rgba(0,0,0,0.02) 60%, transparent 100%)',
-        }}
-      />
+      <div className="relative z-10 mx-auto flex w-full max-w-[1620px] flex-col px-5 sm:px-8 lg:px-10">
+        <div className="mx-auto mb-12 max-w-[860px] text-center sm:mb-14">
+          <div className="mb-4 flex items-center justify-center gap-4">
+            <div className="h-px w-10 bg-gold/45" />
+            <span className="micro-label text-gold">CAS CONCRET</span>
+            <div className="h-px w-10 bg-gold/45" />
+          </div>
 
-      {/* Subtle texture */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          mixBlendMode: 'screen',
-        }}
-      />
+          <h2 className="font-serif text-[clamp(38px,5vw,76px)] leading-[0.95] text-ivory">
+            Un cas concret dans le conseil <span className="text-gold">M&amp;A</span>.
+          </h2>
 
-      <div className="relative z-10 flex flex-col items-center px-[4vw]">
-        {/* Micro label */}
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-8 h-[1px] bg-gold/40" />
-          <span className="micro-label text-gold tracking-[0.18em]">CAS CONCRET</span>
-          <div className="w-8 h-[1px] bg-gold/40" />
+          <p className="mx-auto mt-5 max-w-[760px] text-[15px] leading-7 text-ivory/[0.58] sm:text-base">
+            Pour un cabinet M&amp;A international, nous avons conçu une webapp interne + client pour centraliser les missions, les cibles, les relances, les documents et le reporting.
+          </p>
+
+          <div className="mx-auto mt-7 flex max-w-[760px] flex-wrap items-center justify-center gap-2.5">
+            {proofChips.map((chip) => (
+              <span
+                key={chip}
+                className="rounded-full border border-gold/30 bg-white/[0.065] px-4 py-2 text-[11px] font-medium uppercase tracking-[0.12em] text-ivory/78 shadow-[0_10px_30px_rgba(10,5,18,0.12)]"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <h2
-          className="font-serif text-display-sm text-ivory text-center max-w-[74vw]"
-          style={{ fontWeight: 400 }}
-        >
-          Un cas concret dans le conseil <span className="text-gold">M&amp;A</span>.
-        </h2>
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:gap-5">
+          <article className={`${cardBase} ${cardGlow} min-h-[390px] p-7 sm:p-9 lg:col-span-7 xl:col-span-7`}>
+            <div className="relative z-10">
+              <h3 className="font-serif text-[clamp(24px,2.2vw,34px)] leading-tight text-ivory">
+                Pipeline multi-missions
+              </h3>
+              <p className="mt-2 text-sm text-ivory/70 sm:text-base">15 workflows MVP — 20 au total</p>
+            </div>
 
-        <p className="text-center text-ivory/55 text-[clamp(14px,1.15vw,16px)] leading-relaxed mt-4 max-w-[56vw]">
-          Pour un cabinet M&amp;A international, nous avons conçu une webapp interne + client pour centraliser les missions, les cibles, les relances, les documents et le reporting.
-        </p>
-
-        {/* ===== BENTO GRID ===== */}
-        <div className="mt-10 w-full max-w-[1060px] grid grid-cols-12 gap-3">
-
-          {/* === ROW 1 === */}
-
-          {/* Card 1: Pipeline multi-missions — 8 cols */}
-          <div className="card-premium col-span-12 md:col-span-8 bg-ivory/[0.05] rounded-[16px] border border-gold/15 p-5 flex flex-col min-h-[280px]">
-            {/* Header */}
-            <h3 className="font-serif text-lg text-ivory font-medium">Pipeline multi-missions</h3>
-            <p className="text-[11px] text-ivory/40 mt-0.5">15 workflows MVP — 20 au total</p>
-
-            {/* Step circles */}
-            <div className="flex items-center justify-between mt-4 px-4">
-              {[
-                { label: 'CADRAGE', count: 3 },
-                { label: 'DD', count: 5 },
-                { label: 'SIGNATURES', count: 4 },
-                { label: 'CLOSING', count: 3 },
-              ].map((step, i) => (
-                <div key={i} className="flex flex-col items-center relative flex-1">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium border-2 mb-1 ${
-                    i < 2
-                      ? 'bg-transparent text-ivory border-ivory/30'
-                      : 'bg-transparent text-ivory/40 border-ivory/15'
-                  }`}>
+            <div className="relative z-10 mt-9 grid grid-cols-4">
+              <div className="absolute left-[12.5%] right-[12.5%] top-7 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
+              {pipelineSteps.map((step) => (
+                <div key={step.label} className="relative flex flex-col items-center">
+                  <div
+                    className={`grid h-14 w-14 place-items-center rounded-full border text-2xl ${
+                      step.active
+                        ? 'border-gold text-ivory shadow-[0_0_24px_rgba(214,168,66,0.18)]'
+                        : 'border-[#8e6fa8]/45 text-ivory/[0.86]'
+                    } bg-[#171128]`}
+                  >
                     {step.count}
                   </div>
-                  <span className="text-[9px] text-ivory/45 tracking-wider">{step.label}</span>
-                  {i < 3 && (
-                    <div className="absolute top-5 left-[calc(50%+20px)] right-[calc(50%-20px)] h-[1px] bg-ivory/10" />
-                  )}
+                  <span className="mt-4 text-[9px] font-medium tracking-[0.02em] text-ivory/[0.72] sm:text-[12px] sm:tracking-[0.08em]">
+                    {step.label}
+                  </span>
                 </div>
               ))}
             </div>
 
-            {/* Mission bars */}
-            <div className="mt-5 space-y-3 flex-1">
-              {[
-                { name: 'Mission Alpha', progress: 65, color: 'bg-gold/70' },
-                { name: 'Mission Bêta', progress: 30, color: 'bg-lavender/30' },
-                { name: 'Mission Gamma', progress: 85, color: 'bg-gold/70' },
-              ].map((m, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span className="text-[11px] text-ivory/60 w-28 flex-shrink-0">{m.name}</span>
-                  <div className="flex-1 h-[3px] bg-ivory/10 rounded-full overflow-hidden">
-                    <div className={`h-full rounded-full ${m.color}`} style={{ width: `${m.progress}%` }} />
+            <div className="relative z-10 mt-8 space-y-3.5">
+              {missions.map((mission) => (
+                <div
+                  key={mission.name}
+                  className="grid grid-cols-[1fr_48px] items-center gap-x-5 gap-y-3 rounded-xl border border-white/[0.045] bg-white/[0.025] px-6 py-4 sm:grid-cols-[140px_1fr_48px] sm:gap-y-0"
+                >
+                  <span className="font-serif text-lg text-ivory">{mission.name}</span>
+                  <div className="order-last col-span-2 h-2 overflow-hidden rounded-full bg-[#2c2342] sm:order-none sm:col-span-1">
+                    <div
+                      className={`h-full rounded-full ${
+                        mission.tone === 'gold'
+                          ? 'bg-gradient-to-r from-[#d4a53f] to-[#ffd078]'
+                          : 'bg-gradient-to-r from-[#9d73bd] to-[#d7b9f5]'
+                      }`}
+                      style={{ width: `${mission.progress}%` }}
+                    />
                   </div>
-                  <span className="text-[11px] text-ivory/50 w-7 text-right">{m.progress}%</span>
+                  <span className="text-right text-lg text-ivory">{mission.progress}%</span>
                 </div>
               ))}
             </div>
-          </div>
+          </article>
 
-          {/* Card 2: Tableau de bord M&A — 4 cols */}
-          <div className="card-premium col-span-12 md:col-span-4 bg-ivory/[0.05] rounded-[16px] border border-gold/15 p-5 flex flex-col min-h-[280px]">
-            {/* Micro label */}
-            <div className="flex items-center gap-2 mb-3">
-              <Building2 className="w-3 h-3 text-ivory/40" strokeWidth={1.5} />
-              <span className="text-[9px] text-ivory/40 uppercase tracking-wider">ESPACE INTERNE</span>
+          <article className={`${cardBase} ${cardGlow} min-h-[390px] p-7 sm:p-9 lg:col-span-5 xl:col-span-5`}>
+            <div className="relative z-10 flex items-center gap-3 text-ivory/[0.58]">
+              <Building2 className="h-4 w-4 text-[#b995cf]" strokeWidth={1.6} />
+              <span className="text-xs font-semibold uppercase tracking-[0.16em]">Espace interne</span>
             </div>
-            <h3 className="font-serif text-lg text-ivory font-medium">Tableau de bord M&amp;A</h3>
-            <p className="text-[11px] text-ivory/45 leading-relaxed mt-1.5">
-              Missions, cibles, relances et reporting centralisés pour les équipes.
-            </p>
-            {/* Bar chart visual */}
-            <div className="flex items-end justify-end gap-[3px] h-10 mt-3 mb-4 opacity-40">
-              {[20, 35, 25, 50, 40, 55, 45, 65, 50, 60].map((h, i) => (
-                <div key={i} className="w-1.5 rounded-t-sm bg-ivory/30" style={{ height: `${h}%` }} />
-              ))}
-            </div>
-            {/* Stats */}
-            <div className="mt-auto flex items-center gap-4">
+            <div className="relative z-10 mt-9 grid gap-6 sm:grid-cols-[minmax(0,1fr)_160px] sm:items-end">
               <div>
-                <span className="font-serif text-4xl text-gold font-light">24</span>
-                <span className="block text-[9px] text-ivory/40 uppercase tracking-wider mt-1">MISSIONS</span>
+                <h3 className="font-serif text-[clamp(25px,2vw,34px)] leading-tight text-ivory">
+                  Tableau de bord M&amp;A
+                </h3>
+                <p className="mt-4 text-[15px] leading-7 text-ivory/[0.68]">
+                  Missions, cibles, relances et reporting centralisés pour les équipes.
+                </p>
               </div>
-              <div className="w-[1px] h-12 bg-gold/20" />
-              <div>
-                <span className="font-serif text-4xl text-gold font-light">18</span>
-                <span className="block text-[9px] text-ivory/40 uppercase tracking-wider mt-1">CIBLES</span>
+              <div className="hidden h-32 items-end justify-end gap-2 opacity-40 sm:flex" aria-hidden="true">
+                {[28, 42, 52, 66, 78, 57, 84, 101, 122, 144].map((height, index) => (
+                  <div
+                    key={index}
+                    className="w-3 rounded-t-sm bg-gradient-to-t from-[#342748] to-[#7d5e9c]"
+                    style={{ height }}
+                  />
+                ))}
               </div>
             </div>
-          </div>
-
-          {/* === ROW 2 === */}
-
-          {/* Card 3: Fiche cible structurée — 4 cols */}
-          <div className="card-premium col-span-12 md:col-span-4 bg-ivory/[0.05] rounded-[16px] border border-gold/15 p-5 flex flex-col min-h-[260px]">
-            <span className="text-[10px] text-gold tracking-wider mb-1">60 CHAMPS</span>
-            <h3 className="font-serif text-lg text-ivory font-medium">Fiche cible structurée</h3>
-            <p className="text-[11px] text-ivory/45 leading-relaxed mt-1.5">
-              Informations clés, documents, statuts et historique par cible.
-            </p>
-            {/* Asset */}
-            <div className="mt-3 flex-1 flex items-center justify-center">
-              <img
-                src="/assets/fiche-cible.png"
-                alt="Fiche cible Alpha Partners"
-                className="max-w-[85%] max-h-[140px] object-contain rounded-lg"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Card 4: Reporting & CRM — 4 cols */}
-          <div className="card-premium col-span-12 md:col-span-4 bg-ivory/[0.05] rounded-[16px] border border-gold/15 p-5 flex flex-col min-h-[260px]">
-            <span className="text-[10px] text-gold tracking-wider mb-1">SYNC AUTO</span>
-            <h3 className="font-serif text-lg text-ivory font-medium">Reporting &amp; CRM</h3>
-            <p className="text-[11px] text-ivory/45 leading-relaxed mt-1.5">
-              Reporting auto et sync bidirectionnelle avec le CRM existant.
-            </p>
-            {/* Asset */}
-            <div className="mt-3 flex-1 flex items-center justify-center">
-              <img
-                src="/assets/sync-crm.png"
-                alt="Synchronisation CRM"
-                className="max-w-[85%] max-h-[120px] object-contain"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Card 5: Portail client dédié — 4 cols */}
-          <div className="card-premium col-span-12 md:col-span-4 bg-ivory/[0.05] rounded-[16px] border border-gold/15 p-5 flex flex-col min-h-[260px]">
-            <div className="flex items-center gap-2 mb-1">
-              <Users className="w-3 h-3 text-ivory/40" strokeWidth={1.5} />
-              <span className="text-[9px] text-ivory/40 uppercase tracking-wider">ESPACE CLIENT</span>
-            </div>
-            <h3 className="font-serif text-lg text-ivory font-medium">Portail client dédié</h3>
-            <p className="text-[11px] text-ivory/45 leading-relaxed mt-1.5">
-              Chaque client consulte l'avancement de sa mission en temps réel.
-            </p>
-            {/* Asset */}
-            <div className="mt-3 flex-1 flex items-center justify-center">
-              <img
-                src="/assets/portail-client.png"
-                alt="Portail client Acme Corp"
-                className="max-w-[85%] max-h-[140px] object-contain rounded-lg"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* === ROW 3 === */}
-
-          {/* Card 6: Feedback client — 4 cols */}
-          <div className="card-premium col-span-12 md:col-span-4 bg-ivory/[0.04] rounded-[16px] border border-gold/10 p-5 flex flex-col min-h-[180px]">
-            <div className="flex items-center gap-2.5 mb-2">
-              <MessageSquare className="w-4 h-4 text-gold" strokeWidth={1.5} />
-              <h3 className="font-serif text-sm text-ivory font-medium">Feedback client</h3>
-            </div>
-            <p className="text-[11px] text-ivory/45 leading-relaxed">
-              Collecte structurée des retours intégrée au dossier.
-            </p>
-            {/* Asset */}
-            <div className="mt-auto pt-3 flex items-center justify-center">
-              <img
-                src="/assets/feedback-bubble.png"
-                alt="Retour reçu intégré"
-                className="max-w-[70%] max-h-[70px] object-contain"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Card 7: Historique complet — 4 cols */}
-          <div className="card-premium col-span-12 md:col-span-4 bg-ivory/[0.04] rounded-[16px] border border-gold/10 p-5 flex flex-col min-h-[180px]">
-            <div className="flex items-center gap-2.5 mb-2">
-              <History className="w-4 h-4 text-gold" strokeWidth={1.5} />
-              <h3 className="font-serif text-sm text-ivory font-medium">Historique complet</h3>
-            </div>
-            <p className="text-[11px] text-ivory/45 leading-relaxed mb-3">
-              Audit trail : chaque action est tracée.
-            </p>
-            {/* Timeline */}
-            <div className="mt-auto flex items-center justify-center gap-0">
+            <div className="relative z-10 mt-12 grid grid-cols-2 gap-5">
               {[
-                { size: 'w-3 h-3', color: 'bg-gold', label: 'Document' },
-                { size: 'w-2 h-2', color: 'bg-ivory/30', label: 'Statut' },
-                { size: 'w-2 h-2', color: 'bg-ivory/20', label: 'Commentaire' },
-              ].map((dot, i) => (
-                <div key={i} className="flex items-center">
-                  <div className="flex flex-col items-center">
-                    <div className={`${dot.size} rounded-full ${dot.color}`} />
-                    <span className="text-[8px] text-ivory/30 mt-1.5">{dot.label}</span>
+                { value: '24', label: 'Missions' },
+                { value: '18', label: 'Cibles' },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-[18px] bg-white/[0.025] px-7 py-9 text-center"
+                >
+                  <div className="font-serif text-[clamp(54px,5.2vw,78px)] leading-none text-gold">
+                    {stat.value}
                   </div>
-                  {i < 2 && <div className="w-10 h-[1px] bg-ivory/10 mb-4" />}
+                  <div className="mt-5 text-sm font-medium uppercase tracking-[0.08em] text-ivory/[0.86]">
+                    {stat.label}
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
+          </article>
 
-          {/* Card 8: Sécurité & conformité — 4 cols */}
-          <div className="card-premium col-span-12 md:col-span-4 bg-ivory/[0.04] rounded-[16px] border border-gold/10 p-5 flex flex-col min-h-[180px]">
-            <div className="flex items-center gap-2.5 mb-2">
-              <ShieldCheck className="w-4 h-4 text-gold" strokeWidth={1.5} />
-              <h3 className="font-serif text-sm text-ivory font-medium">Sécurité &amp; conformité</h3>
-            </div>
-            <p className="text-[11px] text-ivory/45 leading-relaxed">
-              Accès par rôles, données isolées, hébergement EU.
-            </p>
-            {/* Asset */}
-            <div className="mt-auto pt-2 flex items-center justify-center">
+          <article className={`${cardBase} ${cardGlow} min-h-[300px] p-7 lg:col-span-4`}>
+            <div className="relative z-10 grid h-full gap-6 sm:grid-cols-[0.9fr_1.1fr] sm:items-center lg:grid-cols-[0.85fr_1.15fr]">
+              <div>
+                <span className="rounded-full bg-[#21152d]/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-gold">
+                  60 champs
+                </span>
+                <h3 className="mt-7 font-serif text-[clamp(24px,1.9vw,31px)] leading-tight text-ivory">
+                  Fiche cible structurée
+                </h3>
+                <p className="mt-4 text-[15px] leading-7 text-ivory/[0.66]">
+                  Informations clés, documents, statuts et historique par cible.
+                </p>
+              </div>
               <img
-                src="/assets/security-shield.png"
-                alt="Sécurité et conformité"
-                className="max-w-[50%] max-h-[70px] object-contain"
+                src="/assets/case-study/fiche-cible-crop.png"
+                alt="Fiche cible Alpha Partners avec secteur, chiffre d'affaires, pays et statut."
+                className={`${assetClass} mx-auto max-h-[245px] w-full max-w-[315px] sm:max-h-[270px]`}
                 loading="lazy"
               />
             </div>
-          </div>
+          </article>
 
+          <article className={`${cardBase} ${cardGlow} min-h-[300px] p-7 lg:col-span-4`}>
+            <div className="relative z-10 grid h-full gap-5 sm:grid-cols-[0.95fr_1.05fr] sm:items-center">
+              <div>
+                <span className="rounded-full bg-[#21152d]/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-gold">
+                  Sync auto
+                </span>
+                <h3 className="mt-7 font-serif text-[clamp(24px,1.9vw,31px)] leading-tight text-ivory">
+                  Reporting &amp; CRM
+                </h3>
+                <p className="mt-4 text-[15px] leading-7 text-ivory/[0.66]">
+                  Reporting auto et sync bidirectionnelle avec le CRM existant.
+                </p>
+              </div>
+              <img
+                src="/assets/case-study/reporting-crm-crop.png"
+                alt="Synchronisation entre reporting prêt et CRM existant."
+                className={`${assetClass} mx-auto max-h-[250px] w-full max-w-[235px]`}
+                loading="lazy"
+              />
+            </div>
+          </article>
+
+          <article className={`${cardBase} ${cardGlow} min-h-[300px] p-7 lg:col-span-4`}>
+            <div className="relative z-10 grid h-full gap-5 sm:grid-cols-[0.9fr_1.1fr] sm:items-center">
+              <div>
+                <div className="flex items-center gap-2 rounded-full bg-[#21152d]/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-gold">
+                  <Users className="h-3.5 w-3.5" strokeWidth={1.6} />
+                  Espace client
+                </div>
+                <h3 className="mt-7 font-serif text-[clamp(24px,1.9vw,31px)] leading-tight text-ivory">
+                  Portail client dédié
+                </h3>
+                <p className="mt-4 text-[15px] leading-7 text-ivory/[0.66]">
+                  Chaque client consulte l'avancement de sa mission en temps réel.
+                </p>
+              </div>
+              <img
+                src="/assets/case-study/portail-client-crop.png"
+                alt="Portail client Acme Corp avec progression de la Mission Alpha."
+                className={`${assetClass} mx-auto max-h-[245px] w-full max-w-[335px]`}
+                loading="lazy"
+              />
+            </div>
+          </article>
+
+          <article className={`${cardBase} ${cardGlow} min-h-[235px] p-7 lg:col-span-4`}>
+            <div className="relative z-10 grid h-full gap-5 sm:grid-cols-[0.78fr_1.22fr] sm:items-center">
+              <div>
+                <div className="mb-5 grid h-12 w-12 place-items-center rounded-full border border-gold/25 bg-gold/5 text-gold">
+                  <MessageSquare className="h-5 w-5" strokeWidth={1.6} />
+                </div>
+                <h3 className="font-serif text-[clamp(23px,1.7vw,29px)] leading-tight text-ivory">
+                  Feedback client
+                </h3>
+                <p className="mt-4 text-[15px] leading-7 text-ivory/[0.66]">
+                  Collecte structurée des retours intégrée au dossier.
+                </p>
+              </div>
+              <img
+                src="/assets/case-study/feedback-client-crop.png"
+                alt="Bulle de feedback indiquant retour reçu et intégré au dossier."
+                className={`${assetClass} mx-auto max-h-[180px] w-full max-w-[310px]`}
+                loading="lazy"
+              />
+            </div>
+          </article>
+
+          <article className={`${cardBase} ${cardGlow} min-h-[235px] p-7 lg:col-span-4`}>
+            <div className="relative z-10 grid h-full gap-6 sm:grid-cols-[0.85fr_1.15fr] sm:items-center">
+              <div>
+                <div className="mb-5 grid h-12 w-12 place-items-center rounded-full border border-gold/25 bg-gold/5 text-gold">
+                  <History className="h-5 w-5" strokeWidth={1.6} />
+                </div>
+                <h3 className="font-serif text-[clamp(23px,1.7vw,29px)] leading-tight text-ivory">
+                  Historique complet
+                </h3>
+                <p className="mt-4 text-[15px] leading-7 text-ivory/[0.66]">
+                  Audit trail : chaque action est tracée.
+                </p>
+              </div>
+              <div className="relative mx-auto w-full max-w-[280px]">
+                <div className="absolute left-7 right-7 top-[7.5px] h-px bg-gradient-to-r from-transparent via-[#8e6fa8]/70 to-transparent" />
+                <div className="relative flex justify-between">
+                  {[
+                    { label: 'Document', color: 'bg-gold' },
+                    { label: 'Statut', color: 'bg-[#b992d7]' },
+                    { label: 'Commentaire', color: 'bg-[#9f83c2]' },
+                  ].map((item) => (
+                    <div key={item.label} className="flex flex-col items-center">
+                      <span className={`h-4 w-4 rounded-full ${item.color} shadow-[0_0_18px_rgba(214,168,66,0.16)]`} />
+                      <span className="mt-4 text-xs text-ivory/[0.62]">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article className={`${cardBase} ${cardGlow} min-h-[235px] p-7 lg:col-span-4`}>
+            <div className="relative z-10 grid h-full gap-5 sm:grid-cols-[0.95fr_1.05fr] sm:items-center">
+              <div>
+                <div className="mb-5 grid h-12 w-12 place-items-center rounded-full border border-gold/25 bg-gold/5 text-gold">
+                  <ShieldCheck className="h-5 w-5" strokeWidth={1.6} />
+                </div>
+                <h3 className="font-serif text-[clamp(23px,1.7vw,29px)] leading-tight text-ivory">
+                  Sécurité &amp; conformité
+                </h3>
+                <p className="mt-4 text-[15px] leading-7 text-ivory/[0.66]">
+                  Accès par rôles, données isolées, hébergement EU.
+                </p>
+              </div>
+              <img
+                src="/assets/case-study/security-shield-crop.png"
+                alt="Bouclier doré représentant la sécurité et la conformité."
+                className={`${assetClass} mx-auto max-h-[178px] w-full max-w-[210px]`}
+                loading="lazy"
+              />
+            </div>
+          </article>
         </div>
 
-        {/* Bottom micro line */}
-        <div className="mt-10 flex items-center gap-3">
-          <div className="w-6 h-[1px] bg-gold/30" />
-          <span className="micro-label text-ivory/35 text-[10px] tracking-[0.16em]">
+        <div className="mx-auto mt-8 grid w-full max-w-[1120px] grid-cols-2 gap-3 rounded-[18px] border border-gold/16 bg-white/[0.025] p-3 sm:grid-cols-4">
+          {trustChips.map((chip) => (
+            <div
+              key={chip}
+              className="rounded-[12px] border border-gold/[0.12] bg-[#20142f]/78 px-3 py-3 text-center text-[11px] font-medium uppercase tracking-[0.1em] text-ivory/72"
+            >
+              {chip}
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex items-center justify-center gap-3">
+          <div className="h-px w-8 bg-gold/35" />
+          <span className="micro-label text-center text-[10px] text-ivory/[0.42]">
             CONFIDENTIEL — SUR-MESURE — PRODUCTION-READY
           </span>
-          <div className="w-6 h-[1px] bg-gold/30" />
+          <div className="h-px w-8 bg-gold/35" />
         </div>
       </div>
     </section>

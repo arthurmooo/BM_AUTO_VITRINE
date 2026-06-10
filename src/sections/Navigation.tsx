@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 
+const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet328/prise-de-contact?month=2026-05';
+
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,11 +16,10 @@ export default function Navigation() {
   }, []);
 
   const navLinks = [
-    { label: 'Accueil', href: '#hero' },
-    { label: 'Cas concret', href: '#case-study' },
-    { label: 'Méthode', href: '#method' },
-    { label: 'Sécurité', href: '#security' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Accueil', href: '/#hero' },
+    { label: 'Cas concret', href: '/#case-study' },
+    { label: 'Méthode', href: '/#method' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -32,7 +33,7 @@ export default function Navigation() {
       >
         <div className="flex items-center justify-between px-[6vw] py-4">
           {/* Wordmark */}
-          <a href="#hero" className="flex items-baseline gap-2 group">
+          <a href="/#hero" className="flex items-baseline gap-2 group">
             <span className="font-serif text-2xl text-violet font-medium tracking-tight">
               BM
             </span>
@@ -58,7 +59,9 @@ export default function Navigation() {
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-4">
             <a
-              href="#contact"
+              href={DIAGNOSTIC_URL}
+              target="_blank"
+              rel="noreferrer"
               className="btn-premium hidden sm:flex items-center gap-2 bg-violet text-ivory px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-violet/90"
             >
               Planifier un diagnostic
@@ -92,7 +95,9 @@ export default function Navigation() {
               </a>
             ))}
             <a
-              href="#contact"
+              href={DIAGNOSTIC_URL}
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setMenuOpen(false)}
               className="mt-4 flex items-center gap-2 bg-violet text-ivory px-6 py-3 rounded-lg text-sm font-medium"
             >

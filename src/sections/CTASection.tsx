@@ -1,5 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 
+const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet328/prise-de-contact?month=2026-05';
+
 /* ------------------------------------------------------------------ */
 /*  Final CTA — Dramatic Violet with Geometric Motifs                  */
 /* ------------------------------------------------------------------ */
@@ -18,42 +20,11 @@ export default function CTASection() {
         }}
       />
 
-      {/* Geometric motifs — left arcs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Left arcs */}
-        <svg
-          className="absolute"
-          style={{ left: '-15%', top: '-20%', width: '50%', height: '140%', opacity: 0.15 }}
-          viewBox="0 0 200 400"
-          fill="none"
-        >
-          <ellipse cx="100" cy="200" rx="80" ry="180" stroke="#B89B5E" strokeWidth="0.5" />
-          <ellipse cx="100" cy="200" rx="60" ry="160" stroke="#B89B5E" strokeWidth="0.5" />
-          <ellipse cx="100" cy="200" rx="40" ry="140" stroke="#B89B5E" strokeWidth="0.5" />
-          {/* Gold dot */}
-          <circle cx="100" cy="80" r="2" fill="#B89B5E" />
-        </svg>
-
-        {/* Right arcs */}
-        <svg
-          className="absolute"
-          style={{ right: '-10%', top: '10%', width: '40%', height: '120%', opacity: 0.12 }}
-          viewBox="0 0 200 400"
-          fill="none"
-        >
-          <ellipse cx="100" cy="200" rx="80" ry="180" stroke="#B89B5E" strokeWidth="0.5" />
-          <ellipse cx="100" cy="200" rx="60" ry="160" stroke="#B89B5E" strokeWidth="0.5" />
-          <ellipse cx="100" cy="200" rx="40" ry="140" stroke="#B89B5E" strokeWidth="0.5" />
-          {/* Gold dot */}
-          <circle cx="100" cy="80" r="2" fill="#B89B5E" />
-        </svg>
-      </div>
-
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-[6vw]">
         {/* Micro label */}
         <span className="micro-label text-gold/80 tracking-[0.2em] mb-6">
-          08 • PARLER DE VOS PROCESS
+          PARLER DE VOS PROCESS
         </span>
 
         {/* Headline */}
@@ -71,31 +42,16 @@ export default function CTASection() {
 
         {/* CTA Button — ivory/beige */}
         <a
-          href="mailto:contact@bmautomation.fr"
+          href={DIAGNOSTIC_URL}
+          target="_blank"
+          rel="noreferrer"
           className="btn-premium group mt-10 inline-flex items-center gap-4 bg-cream text-violet px-10 py-4 rounded-xl text-sm font-medium tracking-wide uppercase hover:bg-ivory"
         >
           Planifier un diagnostic
           <ArrowRight className="w-4 h-4 text-gold transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
         </a>
 
-        {/* Footer Logo */}
-        <div className="mt-16 flex items-center gap-4">
-          {/* BM monogram */}
-          <span className="font-serif text-4xl text-ivory font-light tracking-tight">
-            BM
-          </span>
-          {/* Gold rule */}
-          <div className="w-[1px] h-8 bg-gold/40" />
-          {/* Wordmark */}
-          <div className="flex flex-col items-start">
-            <span className="text-[11px] text-ivory/70 tracking-[0.15em] uppercase">
-              Automation
-            </span>
-            <span className="text-[9px] text-gold tracking-[0.12em] uppercase mt-0.5">
-              Systèmes sur-mesure
-            </span>
-          </div>
-        </div>
+        <div className="mt-14 h-px w-36 bg-gradient-to-r from-transparent via-gold/35 to-transparent" />
       </div>
     </section>
   );
