@@ -94,6 +94,7 @@ const pages: Record<
         body: [
           "Le bouton de planification renvoie vers Calendly, service tiers disposant de ses propres conditions d'utilisation et de sa propre politique de confidentialité.",
           'Le footer contient également un lien vers LinkedIn. La consultation de ces services est régie par leurs propres règles.',
+          "Le site utilise PostHog pour mesurer l'audience, comprendre les parcours de navigation, détecter les points de friction et améliorer la lisibilité des pages. Les événements suivis portent notamment sur les pages consultées, les clics sur les appels à l'action, la profondeur de scroll, les sections vues et le temps passé sur certaines zones.",
           "Le site utilise des polices servies par Google Fonts. Lors du chargement du site, le navigateur peut établir une connexion avec les serveurs de Google afin d'afficher correctement les typographies.",
           "L'hébergement et la distribution du site reposent sur Cloudflare Pages. Cloudflare peut traiter certaines données techniques nécessaires à la sécurité, à la disponibilité et à la performance du site.",
         ],
@@ -101,9 +102,9 @@ const pages: Record<
       {
         title: 'Cookies et mesure d’audience',
         body: [
-          "Aucun outil de mesure d'audience propriétaire, pixel publicitaire ou traceur marketing n'est configuré dans le code du site.",
-          "Les seuls traitements techniques susceptibles d'intervenir sont liés au fonctionnement normal du site, à son hébergement, à la sécurité de la connexion et au chargement des ressources nécessaires à l'affichage.",
-          "Si des cookies ou outils statistiques sont ajoutés ultérieurement, cette politique sera mise à jour et les visiteurs seront informés conformément aux règles applicables.",
+          "PostHog peut déposer des identifiants techniques destinés à distinguer une visite d'une autre, mesurer l'utilisation du site et produire des statistiques de consultation.",
+          "BM Automation n'utilise pas ces données pour de la publicité comportementale, ne les revend pas et ne cherche pas à reconstituer une identité personnelle à partir de la navigation.",
+          "Des enregistrements de session peuvent être utilisés afin de comprendre les zones de blocage ou d'incompréhension. Les champs de saisie et contenus sensibles sont exclus ou masqués lorsque cela est applicable.",
         ],
       },
       {

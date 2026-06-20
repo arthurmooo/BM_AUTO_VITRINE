@@ -10,6 +10,7 @@ import CTASection from './sections/CTASection';
 import FooterSection from './sections/FooterSection';
 import SectionTransition from './sections/SectionTransition';
 import LegalPage from './pages/LegalPage';
+import AnalyticsTracker from './components/AnalyticsTracker';
 
 function HomePage() {
   return (
@@ -78,11 +79,14 @@ function HomePage() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/mentions-legales" element={<LegalPage type="mentions-legales" />} />
-      <Route path="/confidentialite" element={<LegalPage type="confidentialite" />} />
-      <Route path="/conditions" element={<LegalPage type="conditions" />} />
-    </Routes>
+    <>
+      <AnalyticsTracker />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/mentions-legales" element={<LegalPage type="mentions-legales" />} />
+        <Route path="/confidentialite" element={<LegalPage type="confidentialite" />} />
+        <Route path="/conditions" element={<LegalPage type="conditions" />} />
+      </Routes>
+    </>
   );
 }
