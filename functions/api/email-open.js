@@ -1,6 +1,7 @@
 const AIRTABLE_BASE_ID = "appWnHsc1YfR54yYf";
 const OUTREACH_TABLE_ID = "tblGiyl2ZWkd56kkd";
 const EMAIL_OPENS_TABLE_ID = "tblBvhq8UPLXTqRI1";
+const OPEN_GRACE_PERIOD_SECONDS = 5 * 60;
 
 const TRANSPARENT_GIF_BYTES = Uint8Array.from(
   atob("R0lGODlhAQABAIABAP///wAAACH5BAEAAAEALAAAAAABAAEAAAICTAEAOw=="),
@@ -68,6 +69,46 @@ async function resolveOutreach(token, outreachRecordId, outreachId) {
   return result.records?.[0] || null;
 }
 
+function parseSentAtEpoch(value) {
+  if (!value) return null;
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed) || parsed <= 0) return null;
+  return parsed;
+}
+
+function classifyOpenEvent(openedAtMs, sentAtEpoch) {
+  if (!sentAtEpoch) {
+    return {
+      eventType: "open",
+      shouldCount: true,
+      notes:
+        "Ouverture détectée via pixel invisible. Signal faible : images/proxys/cache peuvent fausser l'interprétation.",
+    };
+  }
+
+  const secondsAfterSend = Math.floor(openedAtMs / 1000) - sentAtEpoch;
+  if (secondsAfterSend >= 0 && secondsAfterSend < OPEN_GRACE_PERIOD_SECONDS) {
+    return {
+      eventType: "ignored_auto_prefetch",
+      shouldCount: false,
+      secondsAfterSend,
+      notes:
+        `Hit pixel ignoré pour le compteur d'ouverture: ${secondsAfterSend}s après l'envoi, ` +
+        `sous la fenêtre anti-préchargement de ${OPEN_GRACE_PERIOD_SECONDS}s. ` +
+        "Probable proxy, scan sécurité ou préchargement d'image.",
+    };
+  }
+
+  return {
+    eventType: "open",
+    shouldCount: true,
+    secondsAfterSend,
+    notes:
+      "Ouverture détectée via pixel invisible après la fenêtre anti-préchargement. " +
+      "Signal faible : images/proxys/cache peuvent encore fausser l'interprétation.",
+  };
+}
+
 async function createOpenEvent(token, event, outreachRecord) {
   const outreachFields = outreachRecord?.fields || {};
   const fields = {
@@ -76,12 +117,11 @@ async function createOpenEvent(token, event, outreachRecord) {
     tracking_id: event.trackingId || "",
     outreach_id: event.outreachId || outreachFields.outreach_id || "",
     recipient_hash: event.recipientHash || "",
-    event_type: "open",
+    event_type: event.eventType,
     user_agent: event.userAgent || "",
     ip_hash: event.ipHash || "",
     source: "email_pixel",
-    notes:
-      "Ouverture détectée via pixel invisible. Signal faible : images/proxys/cache peuvent fausser l'interprétation.",
+    notes: event.notes,
   };
 
   if (outreachRecord?.id) fields.outreach_record = [outreachRecord.id];
@@ -122,6 +162,12 @@ async function logOpenToAirtable(request, env) {
     return;
   }
 
+  const openedAtMs = Date.now();
+  const classification = classifyOpenEvent(
+    openedAtMs,
+    parseSentAtEpoch(url.searchParams.get("s")),
+  );
+
   const event = {
     trackingId,
     outreachId: url.searchParams.get("o") || "",
@@ -129,7 +175,11 @@ async function logOpenToAirtable(request, env) {
     recipientHash: url.searchParams.get("rh") || "",
     userAgent: request.headers.get("user-agent") || "",
     ipHash: await shortHash(clientIp(request), env.BM_EMAIL_TRACKING_SALT || "bm-email-open"),
-    openedAt: new Date().toISOString(),
+    openedAt: new Date(openedAtMs).toISOString(),
+    eventType: classification.eventType,
+    shouldCount: classification.shouldCount,
+    secondsAfterSend: classification.secondsAfterSend,
+    notes: classification.notes,
   };
 
   const outreachRecord = await resolveOutreach(
@@ -138,7 +188,9 @@ async function logOpenToAirtable(request, env) {
     event.outreachId,
   );
   const openEventRecord = await createOpenEvent(token, event, outreachRecord);
-  await updateOutreachOpenSummary(token, event, outreachRecord, openEventRecord);
+  if (event.shouldCount) {
+    await updateOutreachOpenSummary(token, event, outreachRecord, openEventRecord);
+  }
 }
 
 export async function onRequestGet({ request, env }) {
