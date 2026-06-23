@@ -3,6 +3,8 @@ import posthog from 'posthog-js';
 const POSTHOG_PROJECT_TOKEN =
   import.meta.env.VITE_POSTHOG_PROJECT_TOKEN || 'phc_qzQUriXUmDq9ndqzCdPWYprNd98Z555FTsR2pDkghSbg';
 const POSTHOG_HOST = import.meta.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com';
+const INTERNAL_VISITOR_PARAM = 'bm_internal';
+const INTERNAL_VISITOR_STORAGE_KEY = 'bm_internal_visitor';
 
 declare global {
   interface Window {
@@ -15,11 +17,71 @@ type AnalyticsProperties = Record<string, string | number | boolean | null | und
 let initialized = false;
 const pendingEvents: Array<{ eventName: string; properties: AnalyticsProperties }> = [];
 
+function normalizeInternalVisitor(value: string | null) {
+  const normalized = value?.trim().toLowerCase();
+  if (!normalized) return null;
+  if (['clear', 'off', 'reset', 'false', '0'].includes(normalized)) return 'clear';
+  if (!/^[a-z0-9_-]{2,32}$/.test(normalized)) return null;
+  return normalized;
+}
+
+function readInternalVisitor() {
+  try {
+    return normalizeInternalVisitor(window.localStorage.getItem(INTERNAL_VISITOR_STORAGE_KEY));
+  } catch {
+    return null;
+  }
+}
+
+function writeInternalVisitor(value: string | null) {
+  try {
+    if (value) {
+      window.localStorage.setItem(INTERNAL_VISITOR_STORAGE_KEY, value);
+      return;
+    }
+    window.localStorage.removeItem(INTERNAL_VISITOR_STORAGE_KEY);
+  } catch {
+    // Ignore storage failures; analytics should never break the page.
+  }
+}
+
+function applyInternalVisitorParam() {
+  const url = new URL(window.location.href);
+  const marker = normalizeInternalVisitor(url.searchParams.get(INTERNAL_VISITOR_PARAM));
+  if (!marker) return;
+
+  writeInternalVisitor(marker === 'clear' ? null : marker);
+
+  url.searchParams.delete(INTERNAL_VISITOR_PARAM);
+  const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+  window.history.replaceState(window.history.state, '', nextUrl);
+}
+
+function internalVisitorProperties(): AnalyticsProperties {
+  const internalVisitor = readInternalVisitor();
+  if (!internalVisitor || internalVisitor === 'clear') {
+    return {
+      bm_is_internal: false,
+      bm_internal_user: null,
+    };
+  }
+
+  return {
+    bm_is_internal: true,
+    bm_internal_user: internalVisitor,
+  };
+}
+
+function registerInternalVisitorProperties() {
+  posthog.register(internalVisitorProperties());
+}
+
 function sendEvent(eventName: string, properties: AnalyticsProperties) {
   posthog.capture(
     eventName,
     {
       site: 'bm-automation-vitrine',
+      ...internalVisitorProperties(),
       ...properties,
     },
     { transport: 'sendBeacon', send_instantly: true },
@@ -37,6 +99,7 @@ export function initPostHog() {
     return;
   }
 
+  applyInternalVisitorParam();
   initialized = true;
 
   posthog.init(POSTHOG_PROJECT_TOKEN, {
@@ -48,6 +111,7 @@ export function initPostHog() {
     person_profiles: 'identified_only',
     request_batching: false,
     loaded: () => {
+      registerInternalVisitorProperties();
       window.__BM_POSTHOG_READY__ = true;
       flushPendingEvents();
     },
