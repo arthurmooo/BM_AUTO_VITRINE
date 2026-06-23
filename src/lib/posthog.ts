@@ -5,6 +5,10 @@ const POSTHOG_PROJECT_TOKEN =
 const POSTHOG_HOST = import.meta.env.VITE_POSTHOG_HOST || 'https://us.i.posthog.com';
 const INTERNAL_VISITOR_PARAM = 'bm_internal';
 const INTERNAL_VISITOR_STORAGE_KEY = 'bm_internal_visitor';
+const BM_OUTREACH_PARAM = 'bm_oid';
+const BM_OUTREACH_STORAGE_KEY = 'bm_outreach_click_id';
+const BM_OUTREACH_COOKIE = 'bm_oid';
+const BM_OUTREACH_ID_RE = /^otc_[A-Za-z0-9_-]{8,80}$/;
 
 declare global {
   interface Window {
@@ -45,6 +49,53 @@ function writeInternalVisitor(value: string | null) {
   }
 }
 
+function normalizeOutreachClickId(value: string | null) {
+  const normalized = value?.trim();
+  if (!normalized || !BM_OUTREACH_ID_RE.test(normalized)) return null;
+  return normalized;
+}
+
+function readCookie(name: string) {
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = document.cookie.match(new RegExp(`(?:^|; )${escapedName}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : null;
+}
+
+function writeOutreachClickId(value: string | null) {
+  try {
+    if (value) {
+      window.localStorage.setItem(BM_OUTREACH_STORAGE_KEY, value);
+      return;
+    }
+    window.localStorage.removeItem(BM_OUTREACH_STORAGE_KEY);
+  } catch {
+    // Ignore storage failures; analytics should never break the page.
+  }
+}
+
+function readOutreachClickId() {
+  try {
+    const stored = normalizeOutreachClickId(window.localStorage.getItem(BM_OUTREACH_STORAGE_KEY));
+    if (stored) return stored;
+  } catch {
+    // Ignore storage failures.
+  }
+
+  return normalizeOutreachClickId(readCookie(BM_OUTREACH_COOKIE));
+}
+
+function applyOutreachAttributionParam() {
+  const url = new URL(window.location.href);
+  const marker = normalizeOutreachClickId(url.searchParams.get(BM_OUTREACH_PARAM));
+  if (!marker) return;
+
+  writeOutreachClickId(marker);
+
+  url.searchParams.delete(BM_OUTREACH_PARAM);
+  const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+  window.history.replaceState(window.history.state, '', nextUrl);
+}
+
 function applyInternalVisitorParam() {
   const url = new URL(window.location.href);
   const marker = normalizeInternalVisitor(url.searchParams.get(INTERNAL_VISITOR_PARAM));
@@ -72,8 +123,26 @@ function internalVisitorProperties(): AnalyticsProperties {
   };
 }
 
+function outreachAttributionProperties(): AnalyticsProperties {
+  const bmOid = readOutreachClickId();
+  if (!bmOid) {
+    return {
+      bm_outreach_click_id: null,
+      bm_traffic_source: null,
+    };
+  }
+
+  return {
+    bm_outreach_click_id: bmOid,
+    bm_traffic_source: 'email_outreach',
+  };
+}
+
 function registerInternalVisitorProperties() {
-  posthog.register(internalVisitorProperties());
+  posthog.register({
+    ...internalVisitorProperties(),
+    ...outreachAttributionProperties(),
+  });
 }
 
 function sendEvent(eventName: string, properties: AnalyticsProperties) {
@@ -82,6 +151,7 @@ function sendEvent(eventName: string, properties: AnalyticsProperties) {
     {
       site: 'bm-automation-vitrine',
       ...internalVisitorProperties(),
+      ...outreachAttributionProperties(),
       ...properties,
     },
     { transport: 'sendBeacon', send_instantly: true },
@@ -100,6 +170,8 @@ export function initPostHog() {
   }
 
   applyInternalVisitorParam();
+  applyOutreachAttributionParam();
+  writeOutreachClickId(readOutreachClickId());
   initialized = true;
 
   posthog.init(POSTHOG_PROJECT_TOKEN, {
