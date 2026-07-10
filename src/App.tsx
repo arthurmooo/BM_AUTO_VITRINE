@@ -11,6 +11,7 @@ import FooterSection from './sections/FooterSection';
 import SectionTransition from './sections/SectionTransition';
 import LegalPage from './pages/LegalPage';
 import AnalyticsTracker from './components/AnalyticsTracker';
+import LanguageMode from './components/LanguageMode';
 
 function HomePage() {
   return (
@@ -80,6 +81,7 @@ function HomePage() {
 export default function App() {
   return (
     <>
+      <LanguageMode />
       <AnalyticsTracker />
       <Routes>
         <Route path="/" element={<HomePage />} />
