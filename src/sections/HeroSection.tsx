@@ -10,8 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 /* ------------------------------------------------------------------ */
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const labelRef = useRef<HTMLDivElement>(null);
-  const ruleRef = useRef<HTMLDivElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subheadRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -25,20 +23,6 @@ export default function HeroSection() {
       /* ---- Auto-play entrance animation (on page load) ---- */
       const loadTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-      // Micro label + gold rule
-      loadTl.fromTo(
-        labelRef.current,
-        { opacity: 0, y: -12 },
-        { opacity: 1, y: 0, duration: 0.7 },
-        0.1
-      );
-      loadTl.fromTo(
-        ruleRef.current,
-        { opacity: 0, scaleX: 0 },
-        { opacity: 1, scaleX: 1, duration: 0.8, transformOrigin: 'center' },
-        0.2
-      );
-
       // Headline — word-by-word reveal
       const words = headlineRef.current?.querySelectorAll('.word');
       if (words) {
@@ -46,7 +30,7 @@ export default function HeroSection() {
           words,
           { opacity: 0, y: 18 },
           { opacity: 1, y: 0, duration: 0.6, stagger: 0.04 },
-          0.35
+          0.15
         );
       }
 
@@ -55,7 +39,7 @@ export default function HeroSection() {
         subheadRef.current,
         { opacity: 0, y: 14 },
         { opacity: 1, y: 0, duration: 0.6 },
-        0.8
+        0.55
       );
 
       // CTAs
@@ -63,7 +47,7 @@ export default function HeroSection() {
         ctaRef.current,
         { opacity: 0, y: 12 },
         { opacity: 1, y: 0, duration: 0.6 },
-        1.0
+        0.75
       );
 
       // Card rises up
@@ -71,7 +55,7 @@ export default function HeroSection() {
         cardRef.current,
         { opacity: 0, y: 60, scale: 0.98 },
         { opacity: 1, y: 0, scale: 1, duration: 0.8 },
-        1.1
+        0.9
       );
 
     }, section);
@@ -99,28 +83,11 @@ export default function HeroSection() {
     >
       {/* Content container */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center pt-[10vh] sm:pt-[12vh] pb-[5vh] px-[6vw]">
-        {/* Micro label — gold */}
-        <div ref={labelRef} className="mt-0" style={{ opacity: 0 }}>
-          <span className="micro-label text-gold tracking-[0.18em]">
-            automatisation sur-mesure
-          </span>
-        </div>
-
-        {/* Gold rule under label */}
-        <div
-          ref={ruleRef}
-          className="w-[200px] h-[1px] mt-3"
-          style={{
-            background: 'linear-gradient(90deg, transparent, rgba(184, 155, 94, 0.6), transparent)',
-            opacity: 0,
-          }}
-        />
-
         {/* Main headline */}
         <h1
           ref={headlineRef}
           aria-label="Vos équipes sont payées pour décider. Pas pour recopier."
-          className="font-serif text-display text-violet text-center mt-[5vh] px-4 sm:px-[8vw] max-w-[95vw] sm:max-w-[90vw]"
+          className="font-serif text-display text-violet text-center px-4 sm:px-[8vw] max-w-[95vw] sm:max-w-[90vw]"
           style={{ fontWeight: 400 }}
         >
           {headlineWords.map((word, i) => (

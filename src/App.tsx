@@ -12,6 +12,7 @@ import SectionTransition from './sections/SectionTransition';
 import LegalPage from './pages/LegalPage';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import LanguageMode from './components/LanguageMode';
+import ClientShowcaseSection from './sections/ClientShowcaseSection';
 
 function HomePage() {
   return (
@@ -29,17 +30,20 @@ function HomePage() {
           <HeroSection />
         </div>
 
-        {/* Section 2: Cost */}
+        {/* Section 2: Client references */}
+        <ClientShowcaseSection />
+
+        {/* Section 3: Cost */}
         <div id="cost">
           <CostSection />
         </div>
 
-        {/* Section 3: Before/After Transformation */}
+        {/* Section 4: Before/After Transformation */}
         <div id="transformation">
           <BeforeAfterSection />
         </div>
 
-        {/* Section 4: Use Cases (Bento) */}
+        {/* Section 5: Use Cases (Bento) */}
         <div id="usecases">
           <UseCasesSection />
         </div>
@@ -48,7 +52,7 @@ function HomePage() {
         {/* Pas de label — "Cas concret" est déjà dans la section violette */}
         <SectionTransition variant="enter-violet" />
 
-        {/* Section 5: M&A Case Study */}
+        {/* Section 6: M&A Case Study */}
         <div id="casestudy">
           <CaseStudySection />
         </div>
@@ -57,7 +61,7 @@ function HomePage() {
         {/* Sortie douce du violet, pas de label redondant */}
         <SectionTransition variant="exit-violet" />
 
-        {/* Section 6: Method */}
+        {/* Section 7: Method */}
         <div id="method">
           <MethodSection />
         </div>
@@ -66,12 +70,12 @@ function HomePage() {
         {/* Entrée directe et impactante, pas de label redondant */}
         <SectionTransition variant="enter-violet" />
 
-        {/* Section 7: Final CTA */}
+        {/* Section 8: Final CTA */}
         <div id="contact">
           <CTASection />
         </div>
 
-        {/* Section 8: Footer */}
+        {/* Section 9: Footer */}
         <FooterSection />
       </main>
     </div>

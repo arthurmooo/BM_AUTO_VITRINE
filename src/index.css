@@ -95,6 +95,72 @@
   animation: subtle-breathe 4s ease-in-out infinite;
 }
 
+/* Client references — paired kinetic wordmark rows */
+@keyframes brand-marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.brand-marquee-row {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.brand-marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: brand-marquee-scroll 42s linear infinite;
+}
+
+.brand-marquee-row--reverse .brand-marquee-track {
+  animation-direction: reverse;
+  animation-duration: 46s;
+}
+
+.brand-marquee-row:hover .brand-marquee-track {
+  animation-play-state: paused;
+}
+
+.brand-marquee-copy {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brand-wordmark-item {
+  display: flex;
+  align-items: center;
+  min-height: clamp(3.25rem, 5vw, 4.25rem);
+  padding-inline: clamp(1.5rem, 3.5vw, 3.75rem);
+  white-space: nowrap;
+}
+
+.brand-wordmark-item::after {
+  content: '';
+  width: 3px;
+  height: 3px;
+  margin-left: clamp(3rem, 7vw, 7.5rem);
+  border-radius: 999px;
+  background: rgba(184, 155, 94, 0.52);
+}
+
+.brand-wordmark {
+  color: rgba(43, 30, 61, 0.58);
+  font-size: clamp(0.76rem, 1.15vw, 1rem);
+  line-height: 1;
+  transition: color 320ms ease;
+}
+
+.brand-marquee-row:hover .brand-wordmark {
+  color: rgba(43, 30, 61, 0.76);
+}
+
 /* Premium section hover details */
 .transformation-panel img,
 .case-study-card,
@@ -143,6 +209,26 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .brand-marquee-row {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+    scrollbar-width: none;
+  }
+
+  .brand-marquee-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .brand-marquee-track {
+    animation: none;
+    transform: none;
+  }
+
+  .brand-marquee-copy--duplicate {
+    display: none;
+  }
+
   .transformation-panel img,
   .case-study-card,
   .case-study-card img,

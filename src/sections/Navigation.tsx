@@ -32,14 +32,16 @@ export default function Navigation() {
         }`}
       >
         <div className="flex items-center justify-between px-[5vw] sm:px-[6vw] py-3 sm:py-4">
-          {/* Wordmark */}
-          <a href="/#hero" className="flex items-baseline gap-2 group">
-            <span className="font-serif text-2xl text-violet font-medium tracking-tight">
-              BM
-            </span>
-            <span className="micro-label text-muted-gray tracking-[0.16em] group-hover:text-violet transition-colors">
-              AUTOMATION
-            </span>
+          {/* Brand lockup */}
+          <a href="/#hero" className="group flex items-center" aria-label="BM Automation — Accueil">
+            <img
+              src="/assets/bm-automation-logo.png"
+              alt="BM Automation"
+              width="1791"
+              height="446"
+              className="h-12 w-auto transition-opacity duration-300 group-hover:opacity-80"
+              decoding="async"
+            />
           </a>
 
           {/* Desktop Nav */}
