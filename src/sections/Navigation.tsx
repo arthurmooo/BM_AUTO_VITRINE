@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 
-const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet328/prise-de-contact';
+const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet-bm-automation-france/30min?month=2026-08';
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);

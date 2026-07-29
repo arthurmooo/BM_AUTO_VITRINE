@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 
-const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet328/prise-de-contact';
+const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet-bm-automation-france/30min?month=2026-08';
 
 /* ------------------------------------------------------------------ */
 /*  Final CTA — Dramatic Violet with Geometric Motifs                  */
