@@ -69,6 +69,16 @@ export default function ClientShowcaseSection() {
           <div
             key={rowIndex}
             className={`brand-marquee-row ${rowIndex === 1 ? 'brand-marquee-row--reverse' : ''}`}
+            onPointerEnter={(event) =>
+              event.currentTarget.querySelector('.brand-marquee-track')?.getAnimations().forEach((animation) => {
+                animation.playbackRate = 0
+              })
+            }
+            onPointerLeave={(event) =>
+              event.currentTarget.querySelector('.brand-marquee-track')?.getAnimations().forEach((animation) => {
+                animation.playbackRate = 1
+              })
+            }
           >
             <div className="brand-marquee-track">
               <BrandGroup brands={brands} />
