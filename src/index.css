@@ -101,6 +101,11 @@
   to { transform: translate3d(-50%, 0, 0); }
 }
 
+@keyframes brand-marquee-scroll-reverse {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
 .brand-marquee-row {
   position: relative;
   overflow: hidden;
@@ -116,7 +121,7 @@
 }
 
 .brand-marquee-row--reverse .brand-marquee-track {
-  animation-direction: reverse;
+  animation-name: brand-marquee-scroll-reverse;
   animation-duration: 46s;
 }
 
