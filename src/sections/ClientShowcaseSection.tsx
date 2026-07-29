@@ -45,7 +45,7 @@ const brandRows: Brand[][] = [
       logo: '/assets/clients/icon-margencel.png',
       logoClassName: 'brand-logo--wide',
     },
-    { name: 'SIMOND', logo: '/assets/clients/simond.svg', logoClassName: 'brand-logo--simond' },
+    { name: 'SIMOND', logo: '/assets/clients/simond.svg?v=2b1e3d', logoClassName: 'brand-logo--simond' },
     { name: 'MASTERLAB', wordmark: '◈ MASTERLAB', className: 'font-bold tracking-[-0.01em]' },
     { name: 'ARCHI KARE', className: 'font-serif font-medium tracking-[0.1em]' },
     {
