@@ -43,7 +43,7 @@ function BrandGroup({ brands, duplicate = false }: { brands: Brand[]; duplicate?
 export default function ClientShowcaseSection() {
   return (
     <section
-      className="brand-showcase relative z-20 overflow-hidden border-y border-gold/10 bg-white py-[clamp(3.25rem,5vw,5rem)]"
+      className="brand-showcase relative z-20 overflow-hidden bg-ivory py-[clamp(3.25rem,5vw,5rem)]"
       aria-labelledby="client-showcase-title"
     >
       <div className="relative z-10 mx-auto flex max-w-[1040px] flex-col items-center px-[6vw] text-center">
