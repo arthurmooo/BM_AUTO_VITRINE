@@ -1,27 +1,63 @@
 type Brand = {
   name: string;
-  className: string;
+  className?: string;
+  crop?: boolean;
+  logo?: string;
+  logoClassName?: string;
+  wordmark?: string;
 };
 
 const brandRows: Brand[][] = [
   [
-    { name: 'KS ENDURANCE', className: 'font-semibold tracking-[0.14em]' },
-    { name: 'MEGÈVE', className: 'font-serif font-medium tracking-[0.1em]' },
-    { name: 'SCORPIO RACING', className: 'font-bold tracking-[0.04em]' },
+    {
+      name: 'KS ENDURANCE',
+      logo: '/assets/clients/ks-endurance.png',
+      logoClassName: 'brand-logo--ks',
+    },
+    { name: 'MEGÈVE', logo: '/assets/clients/megeve.svg', logoClassName: 'brand-logo--megeve' },
+    {
+      name: 'SCORPIO MOTORSPORT',
+      logo: '/assets/clients/scorpio-motorsport.png',
+      logoClassName: 'brand-logo--wide',
+    },
     { name: 'SAMUEL ROSEI MANAGEMENT', className: 'font-medium tracking-[0.11em]' },
     { name: 'CHEZ MARIE DU ROSAY', className: 'font-serif font-medium tracking-[0.08em]' },
-    { name: 'KART PAY', className: 'font-bold tracking-[-0.01em]' },
+    {
+      name: 'KARDPAY',
+      logo: '/assets/clients/kardpay-icon.png',
+      logoClassName: 'brand-logo--mark',
+      wordmark: 'kardpay',
+      className: 'font-bold tracking-[-0.04em] lowercase',
+    },
     { name: 'THETIC.AE', className: 'font-semibold tracking-[0.16em]' },
-    { name: 'HORS PISTE ESME', className: 'font-medium tracking-[0.08em]' },
+    {
+      name: 'HORS PISTE',
+      logo: '/assets/clients/hors-piste.jpg',
+      logoClassName: 'brand-logo--hors-piste',
+      crop: true,
+    },
   ],
   [
-    { name: 'ESME', className: 'font-serif font-medium tracking-[0.16em]' },
+    { name: 'ESME', logo: '/assets/clients/esme.png', logoClassName: 'brand-logo--square' },
     { name: 'CASH IN MIND', className: 'font-semibold tracking-[0.12em]' },
-    { name: 'ICON MARGENCEL', className: 'font-bold tracking-[0.02em]' },
-    { name: 'SIMOND', className: 'font-semibold tracking-[0.18em]' },
-    { name: 'MASTERLAB', className: 'font-bold tracking-[-0.01em]' },
+    {
+      name: 'ICON MARGENCEL',
+      logo: '/assets/clients/icon-margencel.png',
+      logoClassName: 'brand-logo--wide',
+    },
+    { name: 'SIMOND', logo: '/assets/clients/simond.svg', logoClassName: 'brand-logo--simond' },
+    { name: 'MASTERLAB', wordmark: '◈ MASTERLAB', className: 'font-bold tracking-[-0.01em]' },
     { name: 'ARCHI KARE', className: 'font-serif font-medium tracking-[0.1em]' },
-    { name: 'ROBINWOOD', className: 'font-semibold tracking-[0.13em]' },
+    {
+      name: 'ROBINWOOD',
+      logo: '/assets/clients/robinwood.svg',
+      logoClassName: 'brand-logo--robinwood',
+    },
+    {
+      name: 'LE HARAS DU DIAMANT NOIR',
+      logo: '/assets/clients/haras-diamant-noir.png',
+      logoClassName: 'brand-logo--haras',
+    },
   ],
 ];
 
@@ -33,7 +69,33 @@ function BrandGroup({ brands, duplicate = false }: { brands: Brand[]; duplicate?
     >
       {brands.map((brand) => (
         <li key={brand.name} className="brand-wordmark-item">
-          <span className={`brand-wordmark ${brand.className}`}>{brand.name}</span>
+          <span className="brand-lockup">
+            {brand.logo &&
+              (brand.crop ? (
+                <span className="brand-logo-crop">
+                  <img
+                    src={brand.logo}
+                    alt={duplicate ? '' : brand.name}
+                    className={`brand-logo ${brand.logoClassName ?? ''}`}
+                    decoding="async"
+                    draggable={false}
+                  />
+                </span>
+              ) : (
+                <img
+                  src={brand.logo}
+                  alt={duplicate ? '' : brand.name}
+                  className={`brand-logo ${brand.logoClassName ?? ''}`}
+                  decoding="async"
+                  draggable={false}
+                />
+              ))}
+            {(!brand.logo || brand.wordmark) && (
+              <span className={`brand-wordmark ${brand.className ?? ''}`}>
+                {brand.wordmark ?? brand.name}
+              </span>
+            )}
+          </span>
         </li>
       ))}
     </ul>

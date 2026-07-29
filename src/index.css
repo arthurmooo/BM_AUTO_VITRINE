@@ -151,6 +151,80 @@
   background: rgba(184, 155, 94, 0.52);
 }
 
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.brand-logo {
+  display: block;
+  width: auto;
+  max-width: clamp(7rem, 13vw, 11rem);
+  height: clamp(1.8rem, 2.9vw, 2.7rem);
+  object-fit: contain;
+  filter: grayscale(1) contrast(1.08);
+  mix-blend-mode: multiply;
+  opacity: 0.68;
+  user-select: none;
+}
+
+.brand-logo--ks {
+  height: clamp(2.35rem, 3.8vw, 3.25rem);
+  filter: grayscale(1) contrast(1.45) brightness(0.72);
+  opacity: 0.82;
+}
+
+.brand-logo--megeve {
+  width: clamp(3rem, 5vw, 4.1rem);
+  height: clamp(3rem, 5vw, 4.1rem);
+}
+
+.brand-logo--square {
+  width: clamp(2.65rem, 4.5vw, 3.65rem);
+  height: clamp(2.65rem, 4.5vw, 3.65rem);
+}
+
+.brand-logo--wide {
+  max-width: clamp(8.5rem, 15vw, 12.5rem);
+}
+
+.brand-logo--mark {
+  width: clamp(1.7rem, 2.8vw, 2.35rem);
+  height: clamp(1.7rem, 2.8vw, 2.35rem);
+}
+
+.brand-logo--simond {
+  max-width: clamp(8rem, 13vw, 10.75rem);
+}
+
+.brand-logo--robinwood {
+  max-width: clamp(8.5rem, 14vw, 11.5rem);
+  filter: brightness(0);
+  opacity: 0.62;
+}
+
+.brand-logo--haras {
+  height: clamp(2.8rem, 4.8vw, 3.9rem);
+  filter: brightness(0);
+  opacity: 0.6;
+}
+
+.brand-logo-crop {
+  width: clamp(2.7rem, 4.5vw, 3.65rem);
+  height: clamp(2.7rem, 4.5vw, 3.65rem);
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.brand-logo--hors-piste {
+  width: 260%;
+  max-width: none;
+  height: 260%;
+  object-fit: cover;
+  transform: translate(-30.8%, -30.8%);
+}
+
 .brand-wordmark {
   color: rgba(43, 30, 61, 0.58);
   font-size: clamp(0.76rem, 1.15vw, 1rem);
