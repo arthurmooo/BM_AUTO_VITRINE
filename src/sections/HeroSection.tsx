@@ -87,7 +87,7 @@ export default function HeroSection() {
         <h1
           ref={headlineRef}
           aria-label="Vos équipes sont payées pour décider. Pas pour recopier."
-          className="font-serif text-display text-violet text-center px-4 sm:px-[8vw] max-w-[95vw] sm:max-w-[90vw]"
+          className="mt-[clamp(2rem,5vh,4.5rem)] font-serif text-display text-violet text-center px-4 sm:px-[8vw] max-w-[95vw] sm:max-w-[90vw]"
           style={{ fontWeight: 400 }}
         >
           {headlineWords.map((word, i) => (
