@@ -135,10 +135,10 @@ export default function LanguageMode() {
     if (locale === 'fr') return;
 
     translate(document);
-    document.title = 'BM Automation — Custom-built automation systems';
+    document.title = 'BM Automation | Custom automation solutions for M&A and finance teams';
     document.querySelector('meta[name="description"]')?.setAttribute(
       'content',
-      'Custom-built automation systems for M&A and finance teams. Less manual work between your existing tools.',
+      'BM Automation designs custom automation solutions for M&A and finance teams across CRM, email, documents, follow-ups and reporting.',
     );
 
     const observer = new MutationObserver((mutations) => {
