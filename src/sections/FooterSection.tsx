@@ -1,5 +1,6 @@
 import { Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router';
+import { localizedHref } from '../lib/locale';
 
 const LINKEDIN_URL = 'https://www.linkedin.com/company/bm-automation/posts/?feedView=all';
 const CONTACT_EMAIL = 'contact@bm-automation-france.com';
@@ -77,7 +78,7 @@ export default function FooterSection() {
               ].map((item) => (
                 <Link
                   key={item.path}
-                  to={item.path}
+                  to={localizedHref(item.path)}
                   className="cursor-pointer text-[11px] text-violet/45 transition-colors duration-300 hover:text-violet"
                 >
                   {item.label}

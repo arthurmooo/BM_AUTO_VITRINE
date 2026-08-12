@@ -1,6 +1,7 @@
 import { useRef, useState, useCallback } from 'react';
 import { Building2, ClipboardList, RefreshCw, Users, MessageSquare, History, ShieldCheck, Route, ArrowLeftRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { localizedAsset } from '../lib/locale';
 
 /* ------------------------------------------------------------------ */
 /*  Case Study Section — Desktop Bento Grid + Mobile Carousel         */
@@ -52,28 +53,28 @@ const mobileSlides: MobileSlide[] = [
   {
     title: 'Fiche cible structurée',
     description: 'Données cibles alignées avec le CRM, sans double saisie inutile.',
-    image: '/assets/case-study/fiche-cible-crop.webp',
+    image: localizedAsset('/assets/case-study/fiche-cible-crop.webp', '/assets/case-study/fiche-cible-crop-en.png'),
     alt: 'Fiche cible Alpha Partners avec secteur, chiffre\u2019affaires et statut',
     icon: ClipboardList,
   },
   {
     title: 'Reporting \u0026 CRM',
     description: 'Statuts, interactions et documents restent cohérents entre les outils.',
-    image: '/assets/case-study/reporting-crm-crop.webp',
+    image: localizedAsset('/assets/case-study/reporting-crm-crop.webp', '/assets/case-study/reporting-crm-crop-en.png'),
     alt: 'Synchronisation entre reporting et CRM existant',
     icon: RefreshCw,
   },
   {
     title: 'Portail client dédié',
     description: 'Le client suit l’avancement, consulte les cibles et donne son feedback.',
-    image: '/assets/case-study/portail-client-crop.webp',
+    image: localizedAsset('/assets/case-study/portail-client-crop.webp', '/assets/case-study/portail-client-crop-en.png'),
     alt: 'Portail client avec progression de la Mission Alpha',
     icon: Users,
   },
   {
     title: 'Feedback client',
     description: 'Retours clients structurés, rattachés automatiquement au bon dossier.',
-    image: '/assets/case-study/feedback-client-crop.webp',
+    image: localizedAsset('/assets/case-study/feedback-client-crop.webp', '/assets/case-study/feedback-client-crop-en.png'),
     alt: 'Feedback client intégré au dossier',
     icon: MessageSquare,
   },
@@ -242,7 +243,7 @@ export default function CaseStudySection() {
                 </p>
               </div>
               <img
-                src="/assets/case-study/fiche-cible-crop.webp"
+                src={localizedAsset('/assets/case-study/fiche-cible-crop.webp', '/assets/case-study/fiche-cible-crop-en.png')}
                 alt="Fiche cible Alpha Partners avec secteur, chiffre d'affaires, pays et statut."
                 className={`${assetClass} mx-auto max-h-[245px] w-full max-w-[315px]`}
                 loading="lazy"
@@ -264,7 +265,7 @@ export default function CaseStudySection() {
                 </p>
               </div>
               <img
-                src="/assets/case-study/reporting-crm-crop.webp"
+                src={localizedAsset('/assets/case-study/reporting-crm-crop.webp', '/assets/case-study/reporting-crm-crop-en.png')}
                 alt="Synchronisation entre reporting prêt et CRM existant."
                 className={`${assetClass} mx-auto max-h-[250px] w-full max-w-[235px]`}
                 loading="lazy"
@@ -287,7 +288,7 @@ export default function CaseStudySection() {
                 </p>
               </div>
               <img
-                src="/assets/case-study/portail-client-crop.webp"
+                src={localizedAsset('/assets/case-study/portail-client-crop.webp', '/assets/case-study/portail-client-crop-en.png')}
                 alt="Portail client Acme Corp avec progression de la Mission Alpha."
                 className={`${assetClass} mx-auto max-h-[245px] w-full max-w-[335px]`}
                 loading="lazy"
@@ -309,7 +310,7 @@ export default function CaseStudySection() {
                 </p>
               </div>
               <img
-                src="/assets/case-study/feedback-client-crop.webp"
+                src={localizedAsset('/assets/case-study/feedback-client-crop.webp', '/assets/case-study/feedback-client-crop-en.png')}
                 alt="Bulle de feedback indiquant retour reçu et intégré au dossier."
                 className={`${assetClass} mx-auto max-h-[180px] w-full max-w-[310px]`}
                 loading="lazy"

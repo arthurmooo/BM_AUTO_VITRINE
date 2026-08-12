@@ -1,4 +1,5 @@
 import { ArrowRight, Shield } from 'lucide-react';
+import { localizedAsset } from '../lib/locale';
 
 /* ------------------------------------------------------------------ */
 /*  Method Section — Pixel-perfect Reference Match                     */
@@ -20,7 +21,7 @@ export default function MethodSection() {
       subtitle: 'LES FRICTIONS MANUELLES',
       description:
         "Nous isolons les relances, doubles saisies,\nrecherches et reconstructions qui\nconsomment du temps qualifié.",
-      image: '/assets/methode-frictions-normalized.webp',
+      image: localizedAsset('/assets/methode-frictions-normalized.webp', '/assets/methode-frictions-normalized-en.png'),
       alt: 'Frictions manuelles identifiées',
     },
     {

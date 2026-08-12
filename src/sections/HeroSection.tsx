@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
+import { localizedAsset, localizedHref } from '../lib/locale';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -117,14 +118,14 @@ export default function HeroSection() {
           style={{ opacity: 0 }}
         >
           <a
-            href="/#cost"
+            href={localizedHref('/#cost')}
             className="btn-premium group flex items-center gap-2 bg-violet text-ivory px-6 py-3 rounded-lg text-sm font-medium hover:bg-violet/90"
           >
             Identifier un gain de temps
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.5} />
           </a>
           <a
-            href="/#method"
+            href={localizedHref('/#method')}
             className="nav-link-premium text-ink text-sm font-medium px-4 py-3 transition-colors duration-300 hover:text-violet"
           >
             Voir la méthode
@@ -141,7 +142,7 @@ export default function HeroSection() {
           style={{ opacity: 0, marginBottom: 'calc(4vh - 20px)' }}
         >
           <img
-            src="/assets/hero-mission-alpha-industries.webp"
+            src={localizedAsset('/assets/hero-mission-alpha-industries.webp', '/assets/hero-mission-alpha-industries-en.png')}
             alt="Interface BM Automation montrant une mission client avec collecte, traitement, pilotage et transmission."
             className="mx-auto block w-full h-auto max-h-[70vh] sm:max-h-[109vh] object-contain"
             loading="eager"

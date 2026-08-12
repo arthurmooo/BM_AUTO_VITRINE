@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Users, Clock, Euro, Minus, Plus, Timer, Coins, UserCheck } from 'lucide-react';
+import { localizedHref } from '../lib/locale';
 
 /* ------------------------------------------------------------------ */
 /*  Animated Number — counts up/down smoothly                          */
@@ -287,7 +288,7 @@ export default function CostSection() {
         {/* CTA */}
         <div className="mt-6">
           <a
-            href="/#contact"
+            href={localizedHref('/#contact')}
             className="btn-premium group flex items-center gap-2 bg-violet text-ivory px-6 py-3 rounded-lg text-sm font-medium hover:bg-violet/90"
           >
             Identifier un gain de temps

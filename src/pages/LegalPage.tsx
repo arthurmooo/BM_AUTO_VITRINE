@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import Navigation from '../sections/Navigation';
 import FooterSection from '../sections/FooterSection';
+import { localizedHref } from '../lib/locale';
 
 type LegalPageType = 'mentions-legales' | 'confidentialite' | 'conditions';
 
@@ -200,7 +201,7 @@ export default function LegalPage({ type }: { type: LegalPageType }) {
         <div className="mx-auto grid max-w-[1120px] gap-10 lg:grid-cols-[260px_1fr] lg:gap-16">
           <aside className="lg:sticky lg:top-28 lg:h-fit">
             <Link
-              to="/"
+              to={localizedHref('/')}
               className="micro-label text-gold transition-colors duration-300 hover:text-violet"
             >
               Retour au site
@@ -210,7 +211,7 @@ export default function LegalPage({ type }: { type: LegalPageType }) {
               {legalNav.map((item) => (
                 <Link
                   key={item.path}
-                  to={item.path}
+                  to={localizedHref(item.path)}
                   className={`rounded-lg border px-4 py-3 text-sm transition-colors duration-300 ${
                     item.type === type
                       ? 'border-gold/35 bg-cream/70 text-violet'

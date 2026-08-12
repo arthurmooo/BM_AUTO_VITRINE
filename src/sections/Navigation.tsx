@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
+import { localizedHref } from '../lib/locale';
 
 const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet-bm-automation-france/30min?month=2026-08';
 
@@ -33,7 +34,7 @@ export default function Navigation() {
       >
         <div className="flex items-center justify-between px-[5vw] sm:px-[6vw] py-3 sm:py-4">
           {/* Brand lockup */}
-          <a href="/#hero" className="group flex items-center" aria-label="BM Automation — Accueil">
+          <a href={localizedHref('/#hero')} className="group flex items-center" aria-label="BM Automation — Accueil">
             <img
               src="/assets/bm-automation-logo.png"
               alt="BM Automation"
@@ -49,7 +50,7 @@ export default function Navigation() {
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={localizedHref(link.href)}
                 className="nav-link-premium text-sm text-ink/80 hover:text-violet transition-colors duration-300 relative"
               >
                 {link.label}
@@ -93,7 +94,7 @@ export default function Navigation() {
             {navLinks.map((link, i) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={localizedHref(link.href)}
                 onClick={() => setMenuOpen(false)}
                 className="font-serif text-xl sm:text-2xl text-violet hover:text-gold transition-colors duration-300"
                 style={{ animationDelay: `${i * 50}ms` }}

@@ -1,4 +1,5 @@
 import { ArrowRight, ArrowDown } from 'lucide-react';
+import { localizedAsset } from '../lib/locale';
 
 /* ------------------------------------------------------------------ */
 /*  Before / After Section                                            */
@@ -56,7 +57,7 @@ export default function BeforeAfterSection() {
             className="transformation-panel relative flex min-h-[180px] items-center justify-center overflow-visible sm:min-h-[270px] lg:min-h-[430px]"
           >
             <img
-              src="/assets/chaos-avant.webp"
+              src={localizedAsset('/assets/chaos-avant.webp', '/assets/chaos-avant-en.png')}
               alt="Avant : chaos opérationnel"
               className="h-auto w-[min(820px,96vw)] object-contain lg:w-[142%]"
               loading="lazy"
@@ -91,7 +92,7 @@ export default function BeforeAfterSection() {
             className="transformation-panel relative flex min-h-[180px] items-center justify-center overflow-visible sm:min-h-[270px] lg:min-h-[410px]"
           >
             <img
-              src="/assets/chaos-apres.webp"
+              src={localizedAsset('/assets/chaos-apres.webp', '/assets/chaos-apres-en.png')}
               alt="Après : pilotage opérationnel consolidé"
               className="h-auto w-[min(860px,96vw)] object-contain lg:w-[112%]"
               loading="lazy"
