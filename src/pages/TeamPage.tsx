@@ -123,19 +123,21 @@ export default function TeamPage() {
       <main>
         <section className="team-hero">
           <div className="team-shell team-hero__grid">
-            <div>
-              <p className="team-eyebrow">L’ÉQUIPE AUGMENTÉE DE BM AUTOMATION</p>
-              <h1>
-                <s>Petite équipe.</s><br />{' '}
-                <span>Grande exécution.</span>
-              </h1>
+            <p className="team-eyebrow">L’ÉQUIPE AUGMENTÉE DE BM AUTOMATION</p>
+            <h1>
+              <span className="team-hero__headline-reveal">
+                <span className="team-hero__headline-part team-hero__headline-part--first">
+                  <s>Petite équipe.</s>
+                </span>{' '}
+                <span className="team-hero__headline-part team-hero__headline-part--second">
+                  <span>Grande exécution.</span>
+                </span>
+              </span>
+            </h1>
+            <div className="team-hero__bottom">
               <p className="team-hero__intro">
                 Deux humains dirigent BM Automation. Cinq agents spécialisés démultiplient l’exécution.
               </p>
-            </div>
-            <div className="team-hero__figures" aria-label="Composition de l’équipe">
-              <div><strong>2</strong><span>humains responsables</span></div>
-              <div><strong>5</strong><span>agents spécialisés</span></div>
             </div>
           </div>
         </section>
@@ -200,9 +202,6 @@ export default function TeamPage() {
             <a href={DIAGNOSTIC_URL} target="_blank" rel="noreferrer" className="team-closing__cta">
               Parler d’un process réel <ArrowRight size={17} strokeWidth={1.5} />
             </a>
-            <p className="team-closing__names" aria-label="L’équipe BM Automation">
-              Arthur · Romuald · Hermès · Basile · Gaspard · Ariane · Clémence
-            </p>
           </div>
         </section>
       </main>
