@@ -126,11 +126,20 @@
   text-align: center;
 }
 
+.team-section__header--single-line {
+  max-width: none;
+}
+
 .team-section__header h2,
 .team-closing h2 {
   margin: 0;
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   line-height: 1.02;
+}
+
+.team-section__header--single-line h2 {
+  font-size: clamp(2.2rem, 3.2vw, 2.65rem);
+  white-space: nowrap;
 }
 
 .team-section__header > p:last-child {
@@ -146,7 +155,9 @@
 }
 
 .team-grid--founders {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 900px);
+  margin-inline: auto;
+  grid-template-columns: 1fr;
 }
 
 .team-grid--specialists {
@@ -166,6 +177,7 @@
 
 .team-card--featured {
   grid-template-columns: minmax(0, 1.1fr) minmax(250px, 0.9fr);
+  height: 420px;
   min-height: 330px;
 }
 
@@ -279,13 +291,14 @@
   line-height: 1;
 }
 
-.team-section--hermes {
+.team-section--coordinator {
   padding-top: 28px;
 }
 
-.team-section--hermes .team-card,
+.team-section--coordinator .team-card,
 .team-section--critic .team-card {
-  max-width: 900px;
+  height: 380px;
+  max-width: 780px;
   margin-inline: auto;
 }
 
@@ -573,6 +586,10 @@
     font-size: clamp(2.35rem, 10.5vw, 3.35rem);
   }
 
+  .team-section__header--single-line h2 {
+    white-space: normal;
+  }
+
   .team-section__header--centered {
     text-align: left;
   }
@@ -612,6 +629,12 @@
   .team-card--featured,
   .team-grid--specialists .team-card {
     grid-template-columns: 1fr;
+  }
+
+  .team-card--featured,
+  .team-section--coordinator .team-card,
+  .team-section--critic .team-card {
+    height: auto;
   }
 
   .team-card__portrait,

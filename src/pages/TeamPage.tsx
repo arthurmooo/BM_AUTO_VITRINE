@@ -53,11 +53,11 @@ const specialists: Profile[] = [
   },
 ];
 
-const hermes: Profile = {
-  name: 'Hermès',
+const coordinator: Profile = {
+  name: 'Auguste',
   role: 'Chief of Staff',
   description: 'Coordonne les priorités, distribue le travail et remonte les blocages.',
-  image: '/assets/team/hermes.jpg',
+  image: '/assets/team/auguste.jpg',
 };
 
 const clemence: Profile = {
@@ -144,25 +144,20 @@ export default function TeamPage() {
 
         <section className="team-section team-section--founders">
           <div className="team-shell">
-            <header className="team-section__header">
-              <p className="team-eyebrow">LA RESPONSABILITÉ RESTE HUMAINE</p>
-              <h2>Deux expertises.<br />Une même <span>responsabilité.</span></h2>
-              <p>Arthur et Romuald définissent le cap et restent responsables de chaque décision sensible.</p>
-            </header>
             <div className="team-grid team-grid--founders">
               {founders.map((founder) => <ProfileCard key={founder.name} profile={founder} featured />)}
             </div>
-            <Connector label="Ils donnent le cap à Hermès" />
+            <Connector />
           </div>
         </section>
 
-        <section className="team-section team-section--hermes">
-          <div className="team-shell team-shell--narrow">
-            <header className="team-section__header">
+        <section className="team-section team-section--coordinator">
+          <div className="team-shell">
+            <header className="team-section__header team-section__header--single-line">
               <p className="team-eyebrow">COORDINATION</p>
-              <h2>Le cap devient<br />un travail <span>coordonné.</span></h2>
+              <h2>Le cap devient un travail <span>coordonné.</span></h2>
             </header>
-            <ProfileCard profile={hermes} />
+            <ProfileCard profile={coordinator} />
             <Connector />
           </div>
         </section>
@@ -182,8 +177,8 @@ export default function TeamPage() {
         </section>
 
         <section className="team-section team-section--critic">
-          <div className="team-shell team-shell--narrow">
-            <header className="team-section__header">
+          <div className="team-shell">
+            <header className="team-section__header team-section__header--single-line">
               <p className="team-eyebrow">CONTRÔLE INDÉPENDANT</p>
               <h2>Chaque résultat passe par un regard <span>indépendant.</span></h2>
             </header>
