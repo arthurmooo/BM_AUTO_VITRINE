@@ -126,7 +126,7 @@ export default function TeamPage() {
             <div>
               <p className="team-eyebrow">L’ÉQUIPE AUGMENTÉE DE BM AUTOMATION</p>
               <h1>
-                Petite équipe.<br />{' '}
+                <s>Petite équipe.</s><br />{' '}
                 <span>Grande exécution.</span>
               </h1>
               <p className="team-hero__intro">
