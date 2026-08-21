@@ -126,12 +126,11 @@ export default function TeamPage() {
             <div>
               <p className="team-eyebrow">L’ÉQUIPE AUGMENTÉE DE BM AUTOMATION</p>
               <h1>
-                Deux humains pour décider.<br />{' '}
-                <span>Une équipe d’agents pour démultiplier l’exécution.</span>
+                Petite équipe.<br />{' '}
+                <span>Grande exécution.</span>
               </h1>
               <p className="team-hero__intro">
-                Arthur et Romuald donnent le cap, arbitrent et engagent BM Automation. Cinq agents spécialisés
-                coordonnent, construisent, recherchent et contrôlent — chacun dans un périmètre clair.
+                Deux humains dirigent BM Automation. Cinq agents spécialisés démultiplient l’exécution.
               </p>
             </div>
             <div className="team-hero__figures" aria-label="Composition de l’équipe">
