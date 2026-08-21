@@ -350,35 +350,147 @@
 }
 
 .team-closing {
-  padding: clamp(100px, 12vw, 160px) 0;
-  background: var(--team-violet);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(190px, 16vw, 250px) 0 72px;
+  background:
+    radial-gradient(circle at 50% 0, rgba(69, 48, 110, 0.22), transparent 36rem),
+    #10091f;
   color: var(--team-ivory);
 }
 
 .team-closing__inner {
-  text-align: center;
+  position: relative;
+  text-align: left;
 }
 
 .team-closing h2 {
-  margin-bottom: 44px;
+  max-width: 1260px;
+  margin-bottom: 34px;
+  color: #f7f2e9;
+  font-size: clamp(3.1rem, 4vw, 4.2rem);
+  line-height: 1.08;
+}
+
+.team-closing__signal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 132px;
+  background: var(--team-gold);
+}
+
+.team-closing__signal span {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #d8a63d;
+  box-shadow: 0 0 8px rgba(216, 166, 61, 0.95), 0 0 22px rgba(216, 166, 61, 0.4);
+}
+
+.team-closing__subtitle {
+  margin: 0 0 42px;
+  color: rgba(225, 217, 235, 0.67);
+  font-size: clamp(0.82rem, 1.04vw, 1rem);
+  line-height: 1.6;
 }
 
 .team-closing__cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 20px;
-  border: 1px solid rgba(247, 243, 236, 0.35);
-  border-radius: 8px;
-  color: var(--team-ivory);
-  font-size: 0.9rem;
-  transition: border-color 220ms ease, background 220ms ease, transform 220ms ease;
+  padding: 18px 28px;
+  border: 1px solid rgba(222, 183, 109, 0.6);
+  border-radius: 5px;
+  background: #f2dfbd;
+  color: #20133e;
+  font-size: 0.94rem;
+  font-weight: 600;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.18);
+  transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
 }
 
 .team-closing__cta:hover {
-  border-color: var(--team-gold);
-  background: rgba(255, 255, 255, 0.06);
+  background: #f7e9cf;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
+}
+
+.team-closing__names {
+  margin: 68px 0 0;
+  color: rgba(225, 217, 235, 0.17);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(1.3rem, 2.1vw, 2rem);
+  line-height: 1.4;
+  text-align: right;
+}
+
+.team-footer-dark {
+  background: #10091f;
+  color: #f7f2e9;
+  padding: 0 0 46px;
+}
+
+.team-footer-dark__inner {
+  width: min(88vw, 1320px);
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(225, 217, 235, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+}
+
+.team-footer-dark__brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.team-footer-dark__brand > span {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.team-footer-dark__brand i {
+  width: 1px;
+  height: 27px;
+  background: rgba(177, 132, 45, 0.72);
+}
+
+.team-footer-dark__brand small {
+  font-size: 0.72rem;
+  font-style: normal;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.team-footer-dark nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.team-footer-dark nav a {
+  color: rgba(225, 217, 235, 0.6);
+  font-size: 0.72rem;
+  transition: color 200ms ease;
+}
+
+.team-footer-dark nav a:hover {
+  color: #f7f2e9;
+}
+
+@media (min-width: 1200px) {
+  .team-closing__subtitle {
+    white-space: nowrap;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -473,6 +585,42 @@
 
   .team-section__header--centered {
     text-align: left;
+  }
+
+  .team-closing {
+    padding: 150px 0 64px;
+  }
+
+  .team-closing__signal {
+    height: 92px;
+  }
+
+  .team-closing h2 {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+
+  .team-closing h2 br {
+    display: none;
+  }
+
+  .team-closing__subtitle {
+    margin-bottom: 34px;
+    font-size: 0.92rem;
+  }
+
+  .team-closing__names {
+    margin-top: 58px;
+    text-align: left;
+  }
+
+  .team-footer-dark__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .team-footer-dark nav {
+    flex-wrap: wrap;
+    gap: 14px 22px;
   }
 
   .team-card,

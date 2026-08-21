@@ -8,7 +8,30 @@ const CONTACT_EMAIL = 'contact@bm-automation-france.com';
 /* ------------------------------------------------------------------ */
 /*  Footer — Institutional Ivory Signature                             */
 /* ------------------------------------------------------------------ */
-export default function FooterSection() {
+export default function FooterSection({ variant = 'ivory' }: { variant?: 'ivory' | 'dark' }) {
+  if (variant === 'dark') {
+    return (
+      <footer className="team-footer-dark">
+        <div className="team-footer-dark__inner">
+          <div className="team-footer-dark__brand" aria-label="BM Automation">
+            <span>BM</span>
+            <i aria-hidden="true" />
+            <small>Automation</small>
+          </div>
+          <nav aria-label="Liens légaux">
+            {[
+              { label: 'Mentions légales', path: '/mentions-legales' },
+              { label: 'Confidentialité', path: '/confidentialite' },
+              { label: 'Conditions', path: '/conditions' },
+            ].map((item) => (
+              <Link key={item.path} to={localizedHref(item.path)}>{item.label}</Link>
+            ))}
+          </nav>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer
       id="footer"
