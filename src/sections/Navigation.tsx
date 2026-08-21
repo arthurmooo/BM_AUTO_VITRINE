@@ -20,6 +20,7 @@ export default function Navigation() {
     { label: 'Accueil', href: '/#hero' },
     { label: 'Cas concret', href: '/#case-study' },
     { label: 'Méthode', href: '/#method' },
+    { label: 'Équipe', href: '/equipe' },
     { label: 'Contact', href: '/#contact' },
   ];
 

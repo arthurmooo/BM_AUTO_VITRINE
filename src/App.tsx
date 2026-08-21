@@ -13,6 +13,7 @@ import LegalPage from './pages/LegalPage';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import LanguageMode from './components/LanguageMode';
 import ClientShowcaseSection from './sections/ClientShowcaseSection';
+import TeamPage from './pages/TeamPage';
 
 function HomePage() {
   return (
@@ -89,6 +90,7 @@ export default function App() {
       <AnalyticsTracker />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/equipe" element={<TeamPage />} />
         <Route path="/mentions-legales" element={<LegalPage type="mentions-legales" />} />
         <Route path="/confidentialite" element={<LegalPage type="confidentialite" />} />
         <Route path="/conditions" element={<LegalPage type="conditions" />} />
