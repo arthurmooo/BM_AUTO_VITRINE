@@ -20,11 +20,9 @@
 }
 
 .team-hero {
-  min-height: 520px;
   display: flex;
   align-items: flex-start;
-  padding: 176px 0 70px;
-  border-bottom: 1px solid rgba(177, 132, 45, 0.18);
+  padding: 150px 0 20px;
 }
 
 .team-hero__grid {
@@ -305,7 +303,7 @@
 }
 
 .team-section--founders {
-  padding-top: 34px;
+  padding-top: 22px;
 }
 
 .team-section--coordinator {
