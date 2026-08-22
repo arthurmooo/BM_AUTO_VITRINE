@@ -147,7 +147,6 @@ export default function TeamPage() {
             <div className="team-grid team-grid--founders">
               {founders.map((founder) => <ProfileCard key={founder.name} profile={founder} featured />)}
             </div>
-            <Connector />
           </div>
         </section>
 
