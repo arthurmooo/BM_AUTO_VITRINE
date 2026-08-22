@@ -1,11 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navigation from '../sections/Navigation';
 import FooterSection from '../sections/FooterSection';
 import { getLocale } from '../lib/locale';
 import './TeamPage.css';
 
 const DIAGNOSTIC_URL = 'https://calendly.com/romuald-bocquet-bm-automation-france/30min?month=2026-08';
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Profile = {
   name: string;
@@ -102,6 +106,8 @@ function Connector({ label }: { label?: string }) {
 }
 
 export default function TeamPage() {
+  const pageRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const isEnglish = getLocale() === 'en';
     document.title = isEnglish
@@ -115,8 +121,202 @@ export default function TeamPage() {
     );
   }, []);
 
+  useLayoutEffect(() => {
+    const page = pageRef.current;
+    if (!page) return;
+
+    const media = gsap.matchMedia();
+
+    media.add(
+      {
+        motion: '(prefers-reduced-motion: no-preference)',
+        desktop: '(min-width: 761px)',
+      },
+      (context) => {
+        if (!context.conditions?.motion) return;
+
+        const desktop = Boolean(context.conditions.desktop);
+        const animation = gsap.context(() => {
+          gsap.set('.team-hero h1 s', { '--strike-progress': 0 });
+          gsap.set('.team-section--coordinator', { '--entry-line': 0, '--entry-node': 0 });
+          gsap.set('.team-section--specialists', {
+            '--branch-trunk': 0,
+            '--branch-spread': 0,
+            '--branch-drop': 0,
+            '--branch-nodes': 0,
+          });
+          gsap.set('.team-section--critic .team-card', {
+            '--outline-progress': 0,
+          });
+          gsap.set('.team-closing', { '--closing-line': 0, '--closing-node': 0 });
+
+          const revealCard = (card: Element, fromX = 0, delay = 0) => {
+            const portrait = card.querySelector('.team-card__portrait');
+            const content = card.querySelector('.team-card__content');
+            const timeline = gsap.timeline({
+              delay,
+              scrollTrigger: { trigger: card, start: 'top 86%', once: true },
+            });
+
+            timeline
+              .fromTo(card, { autoAlpha: 0, x: fromX, y: desktop ? 0 : 24 }, {
+                autoAlpha: 1,
+                x: 0,
+                y: 0,
+                duration: 0.62,
+                ease: 'power3.out',
+              })
+              .fromTo(portrait, { clipPath: 'inset(0 100% 0 0)' }, {
+                clipPath: 'inset(0 0% 0 0)',
+                duration: 0.68,
+                ease: 'power3.out',
+              }, '<0.06')
+              .fromTo(content, { autoAlpha: 0, y: 10 }, {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.52,
+                ease: 'power2.out',
+              }, '<0.16');
+          };
+
+          const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } });
+          heroTimeline
+            .fromTo('.team-hero__headline-part--first', { clipPath: 'inset(0 100% 0 0)', x: -12 }, {
+              clipPath: 'inset(0 0% 0 0)', x: 0, duration: 0.5,
+            })
+            .to('.team-hero h1 s', { '--strike-progress': 1, duration: 0.4 }, '>-0.05')
+            .fromTo('.team-hero__headline-part--second', { clipPath: 'inset(0 100% 0 0)', x: -10 }, {
+              clipPath: 'inset(0 0% 0 0)', x: 0, duration: 0.5,
+            }, '>-0.05')
+            .fromTo('.team-hero__intro', { autoAlpha: 0, y: 10 }, {
+              autoAlpha: 1, y: 0, duration: 0.42,
+            }, '>0.04');
+
+          const founderCards = gsap.utils.toArray<Element>('.team-grid--founders .team-card');
+          founderCards.forEach((card, index) => revealCard(card, desktop ? (index === 0 ? -26 : 26) : 0, index * 0.08));
+
+          const coordinatorSection = page.querySelector('.team-section--coordinator');
+          if (coordinatorSection) {
+            const coordinatorTimeline = gsap.timeline({
+              scrollTrigger: { trigger: coordinatorSection, start: 'top 78%', once: true },
+            });
+            coordinatorTimeline
+              .to(coordinatorSection, { '--entry-line': 1, duration: 0.62, ease: 'power2.inOut' })
+              .to(coordinatorSection, { '--entry-node': 1, duration: 0.3 }, '>-0.12')
+              .fromTo(coordinatorSection.querySelector('.team-section__header'), { autoAlpha: 0, y: 18 }, {
+                autoAlpha: 1, y: 0, duration: 0.58, ease: 'power3.out',
+              }, '<');
+          }
+          const coordinatorCard = page.querySelector('.team-section--coordinator .team-card');
+          if (coordinatorCard) revealCard(coordinatorCard);
+
+          const specialistSection = page.querySelector('.team-section--specialists');
+          if (specialistSection) {
+            const cards = gsap.utils.toArray<Element>('.team-grid--specialists .team-card');
+            const portraits = cards.map((card) => card.querySelector('.team-card__portrait'));
+            const contents = cards.map((card) => card.querySelector('.team-card__content'));
+            const specialistTimeline = gsap.timeline({
+              scrollTrigger: { trigger: specialistSection, start: 'top 80%', once: true },
+            });
+
+            specialistTimeline
+              .fromTo(specialistSection.querySelector('.team-section__header'), { autoAlpha: 0, y: 18 }, {
+                autoAlpha: 1, y: 0, duration: 0.58, ease: 'power3.out',
+              });
+
+            if (desktop) {
+              specialistTimeline
+                .to(specialistSection, { '--branch-trunk': 1, duration: 0.5, ease: 'power2.inOut' }, '<0.12')
+                .to(specialistSection, { '--branch-spread': 1, duration: 0.62, ease: 'power2.inOut' })
+                .to(specialistSection, { '--branch-drop': 1, '--branch-nodes': 1, duration: 0.48, ease: 'power2.inOut' });
+            }
+
+            specialistTimeline
+              .fromTo(cards, { autoAlpha: 0, y: 24 }, {
+                autoAlpha: 1, y: 0, duration: 0.62, stagger: 0.12, ease: 'power3.out',
+              }, desktop ? '<0.08' : '>0.06')
+              .fromTo(portraits, { clipPath: 'inset(0 100% 0 0)' }, {
+                clipPath: 'inset(0 0% 0 0)', duration: 0.68, stagger: 0.12, ease: 'power3.out',
+              }, '<0.04')
+              .fromTo(contents, { autoAlpha: 0, y: 10 }, {
+                autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.12, ease: 'power2.out',
+              }, '<0.16');
+          }
+
+          gsap.utils.toArray<Element>('.team-connector').forEach((connector) => {
+            const timeline = gsap.timeline({
+              scrollTrigger: { trigger: connector, start: 'top 88%', once: true },
+            });
+            timeline
+              .fromTo(connector.querySelector('.team-connector__line'), { scaleY: 0 }, {
+                scaleY: 1, duration: 0.62, ease: 'power2.inOut',
+              })
+              .fromTo(connector.querySelector('.team-connector__arrow'), { autoAlpha: 0, y: -6 }, {
+                autoAlpha: 1, y: 0, duration: 0.35,
+              }, '>-0.08');
+          });
+
+          const criticSection = page.querySelector('.team-section--critic');
+          const criticCard = criticSection?.querySelector('.team-card');
+          if (criticSection && criticCard) {
+            const badge = criticCard.querySelector('.team-badge');
+            const timeline = gsap.timeline({
+              scrollTrigger: { trigger: criticSection, start: 'top 78%', once: true },
+            });
+            timeline
+              .fromTo(criticSection.querySelector('.team-section__header'), { autoAlpha: 0, y: 18 }, {
+                autoAlpha: 1, y: 0, duration: 0.58, ease: 'power3.out',
+              })
+              .fromTo(criticCard, { autoAlpha: 0, y: 24 }, {
+                autoAlpha: 1, y: 0, duration: 0.62, ease: 'power3.out',
+              }, '<0.14')
+              .fromTo(criticCard.querySelector('.team-card__portrait'), { clipPath: 'inset(0 100% 0 0)' }, {
+                clipPath: 'inset(0 0% 0 0)', duration: 0.68, ease: 'power3.out',
+              }, '<0.06')
+              .to(criticCard, { '--outline-progress': 1, duration: 0.68, ease: 'power2.inOut' })
+              .fromTo(criticCard.querySelector('.team-card__content'), { autoAlpha: 0, y: 10 }, {
+                autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out',
+              }, '<0.18')
+              .fromTo(badge, { autoAlpha: 0, y: 8 }, {
+                autoAlpha: 1, y: 0, duration: 0.42, ease: 'power2.out',
+              }, '>0.02');
+          }
+
+          const closing = page.querySelector('.team-closing');
+          if (closing) {
+            const closingTimeline = gsap.timeline({
+              scrollTrigger: { trigger: closing, start: 'top 88%', once: true },
+            });
+            closingTimeline
+              .fromTo(closing, { autoAlpha: 0, y: 28, clipPath: 'inset(10% 0 0 0)' }, {
+                autoAlpha: 1, y: 0, clipPath: 'inset(0% 0 0 0)', duration: 0.55, ease: 'power3.out',
+              })
+              .to(closing, { '--closing-line': 1, duration: 0.42, ease: 'power2.inOut' }, '<0.04')
+              .to(closing, { '--closing-node': 1, duration: 0.2 }, '<0.24')
+              .fromTo(closing.querySelector('.team-eyebrow'), { autoAlpha: 0, y: 12 }, {
+                autoAlpha: 1, y: 0, duration: 0.38,
+              }, '<')
+              .fromTo(closing.querySelector('h2'), { autoAlpha: 0, y: 14 }, {
+                autoAlpha: 1, y: 0, duration: 0.46,
+              }, '<0.08')
+              .fromTo(closing.querySelector('.team-closing__subtitle'), { autoAlpha: 0, y: 10 }, {
+                autoAlpha: 1, y: 0, duration: 0.36,
+              }, '<0.12')
+              .fromTo(closing.querySelector('.team-closing__cta'), { autoAlpha: 0, y: 10 }, {
+                autoAlpha: 1, y: 0, duration: 0.36,
+              }, '<0.1');
+          }
+        }, page);
+
+        return () => animation.revert();
+      },
+    );
+
+    return () => media.revert();
+  }, []);
+
   return (
-    <div className="team-page">
+    <div ref={pageRef} className="team-page">
       <div className="grain-overlay" />
       <Navigation />
 
