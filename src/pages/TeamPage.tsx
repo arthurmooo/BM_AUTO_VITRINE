@@ -186,15 +186,12 @@ export default function TeamPage() {
         </section>
 
         <section className="team-closing">
-          <div className="team-closing__signal" aria-hidden="true"><span /></div>
           <div className="team-shell team-closing__inner">
             <p className="team-eyebrow">À VOTRE TOUR</p>
-            <h2>Vous venez de rencontrer notre équipe.<br />{' '}Montrez-nous maintenant ce qui ralentit la vôtre.</h2>
-            <p className="team-closing__subtitle">
-              Relances, ressaisies, recherches, reporting ou coordination : partons d’un process réel et identifions ce qui peut être supprimé, accéléré ou fiabilisé.
-            </p>
+            <h2>Votre équipe aussi peut faire plus, sans s’alourdir.</h2>
+            <p className="team-closing__subtitle">Montrez-nous le process qui la ralentit.</p>
             <a href={DIAGNOSTIC_URL} target="_blank" rel="noreferrer" className="team-closing__cta">
-              Parler d’un process réel <ArrowRight size={17} strokeWidth={1.5} />
+              Identifier le premier levier <ArrowRight size={17} strokeWidth={1.5} />
             </a>
           </div>
         </section>
