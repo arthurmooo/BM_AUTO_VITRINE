@@ -8,7 +8,7 @@ export function getLocale(): 'fr' | 'en' {
   if (typeof window === 'undefined') return 'fr';
   const requestedLocale = new URLSearchParams(window.location.search).get('lang');
   if (requestedLocale === 'fr' || requestedLocale === 'en') return requestedLocale;
-  return window.__BM_LOCALE__ || (navigator.language.toLowerCase().startsWith('fr') ? 'fr' : 'en');
+  return window.__BM_LOCALE__ || 'fr';
 }
 
 export function localizedAsset(frenchPath: string, englishPath: string): string {

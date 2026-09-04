@@ -67,5 +67,6 @@ assert.doesNotMatch(source, /children\.length === words\.length/, 'Animated head
 assert.match(source, /characterData: true/, 'Client-side route changes must translate reused text nodes.');
 assert.match(localeSource, /requestedLocale === 'fr' \|\| requestedLocale === 'en'/, 'The local language URL override must remain available.');
 assert.match(localeSource, /url\.searchParams\.set\('lang', requestedLocale\)/, 'Internal navigation must preserve the explicit language.');
+assert.doesNotMatch(localeSource, /navigator\.language/, 'The canonical URL must not change language based on the browser locale.');
 
 console.log(`English coverage check passed (${required.length} critical strings, ${englishAssets.length} localized visuals).`);
