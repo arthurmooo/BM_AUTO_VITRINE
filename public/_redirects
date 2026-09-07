@@ -1,1 +1,1 @@
-/* /index.html 200
+# Le fallback SPA natif conserve les routes React ; les pages HTML ont leur propre URL.

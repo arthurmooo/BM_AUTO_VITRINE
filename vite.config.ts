@@ -5,7 +5,8 @@ import { inspectAttr } from 'kimi-plugin-inspect-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './',
+  base: '/',
+  build: { rollupOptions: { input: { main: path.resolve(__dirname, 'index.html'), companyBrain: path.resolve(__dirname, 'company-brain.html') } } },
   plugins: [inspectAttr(), react()],
   server: {
     port: 3000,

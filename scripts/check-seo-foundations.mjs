@@ -40,3 +40,21 @@ assert.equal(seoForUrl('https://bm-automation-france.com/route-inconnue').robots
 assert.equal(seoForUrl('https://bm-automation-france.com/route-inconnue').canonical, 'https://bm-automation-france.com/');
 
 console.log('SEO foundations: OK');
+
+// La nouvelle page doit être lisible dans le HTML livré, sans rendu JavaScript.
+const { readFile } = await import('node:fs/promises');
+const html = await readFile(new URL('../dist/company-brain.html', import.meta.url), 'utf8');
+assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
+for (const id of ['ma', 'tpe-pme', 'confiance', 'premier-usage']) assert.ok(html.includes(`id="${id}"`));
+assert.ok(html.includes('hypothèse de travail'));
+assert.ok(html.includes('ne constitue pas une preuve d’adoption'));
+assert.ok(!html.includes('—'), 'Règle Copywriting active : aucun tiret cadratin');
+assert.ok(html.includes('calendly.com/romuald-bocquet-bm-automation-france/30min'));
+assert.ok(html.includes('data-analytics-segment="ma"'));
+assert.ok(html.includes('data-analytics-segment="tpe-pme"'));
+assert.equal(seoForUrl('https://bm-automation-france.com/company-brain').robots, 'index,follow');
+assert.equal(seoForUrl('https://bm-automation-france.com/company-brain/').canonical, 'https://bm-automation-france.com/company-brain');
+assert.equal(seoForUrl('https://bm-automation-france.com/company-brain?lang=en').locale, 'fr');
+assert.equal(seoForUrl('https://bm-automation-france.com/company-brain?lang=en').robots, 'noindex,follow');
+assert.ok((await readFile(new URL('../dist/sitemap.xml', import.meta.url), 'utf8')).includes('/company-brain</loc>'));
+console.log('Company Brain : HTML complet, canonical, segments et CTA OK');

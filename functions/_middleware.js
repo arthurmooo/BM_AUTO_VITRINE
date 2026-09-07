@@ -53,6 +53,13 @@ const SEO_BY_PATH = {
       description: 'BM Automation designs custom automation solutions for M&A and finance teams across CRM, email, documents, follow-ups and reporting.',
     },
   },
+  '/company-brain': {
+    indexable: true,
+    fr: {
+      title: 'Company Brain : la mémoire opérationnelle de votre entreprise | BM',
+      description: 'Reliez documents, emails, CRM et décisions dans une mémoire d’entreprise sourcée. Deux usages concrets, en M&A et en TPE/PME, pour cadrer un premier projet utile.',
+    },
+  },
   '/equipe': {
     indexable: true,
     fr: {
@@ -116,7 +123,7 @@ export function seoForUrl(requestUrl) {
   const path = normalizedPath(url.pathname);
   const page = SEO_BY_PATH[path];
   const requestedLocale = url.searchParams.get('lang');
-  const locale = requestedLocale === 'en' ? 'en' : 'fr';
+  const locale = requestedLocale === 'en' && page?.en ? 'en' : 'fr';
   const metadata = (page || SEO_BY_PATH['/'])[locale];
   const canonicalPath = page ? path : '/';
 
@@ -139,7 +146,7 @@ export async function onRequest(context) {
   const headers = new Headers(response.headers);
   headers.set('Content-Language', seo.locale);
   const htmlResponse = new Response(response.body, {
-    status: response.status,
+    status: SEO_BY_PATH[normalizedPath(new URL(context.request.url).pathname)] ? response.status : 404,
     statusText: response.statusText,
     headers,
   });

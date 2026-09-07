@@ -84,6 +84,8 @@ export default function FooterSection({ variant = 'ivory' }: { variant?: 'ivory'
             </div>
           </div>
 
+          <a href="/company-brain" className="inline-block text-sm text-violet mb-8">Company Brain : retrouver vos connaissances et décisions ↗</a>
+
           {/* ===== DIVIDER ===== */}
           <div className="h-[1px] bg-violet/10 mb-6" />
 
